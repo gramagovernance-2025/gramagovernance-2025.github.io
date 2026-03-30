@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRAMA — Governance, Ground Up</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-blush-lightest: #F8E9EC;
+    --color-blush-light: #E8C4CB;
+    --color-blush: #D59EAB;
+    --color-rose: #BF7687;
+    --color-berry: #A74D63;
+    --color-crimson: #8E233E;
+    --color-deep: #800019;
+    --color-ink: #1a1a1a;
+    --color-ink-light: #4a4a4a;
+    --color-ink-muted: #7a7a7a;
+    --color-cream: #FDFBFB;
+    --color-sand: #e8dfe1;
+    --color-gray-text: #6b6068;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+    --max-width: 1200px;
+    --section-padding: clamp(80px, 10vw, 140px);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-sans); color: var(--color-ink);
+    background: var(--color-cream); line-height: 1.7; font-size: 16px;
+    -webkit-font-smoothing: antialiased; overflow-x: hidden;
+  }
+
+  /* ═══ NAV ═══ */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(253, 251, 251, 0.92);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(128, 0, 25, 0.06);
+    transition: all 0.3s ease;
+  }
+  nav .nav-inner {
+    max-width: var(--max-width); margin: 0 auto;
+    padding: 0 clamp(24px, 4vw, 48px);
+    display: flex; align-items: center; justify-content: space-between; height: 72px;
+  }
+  .nav-logo img { height: 38px; width: auto; display: block; }
+  .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 500; color: var(--color-ink-light);
+    text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -4px; left: 0;
+    width: 0; height: 1.5px; background: var(--color-crimson); transition: width 0.3s ease;
+  }
+  .nav-links a:hover { color: var(--color-crimson); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-links .nav-linkedin { display: inline-flex; align-items: center; color: var(--color-crimson); }
+  .nav-links .nav-linkedin:hover { color: var(--color-deep); }
+  .nav-links .nav-linkedin::after { display: none; }
+  .nav-hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    width: 32px; height: 24px; position: relative;
+  }
+  .nav-hamburger span {
+    display: block; width: 100%; height: 2px; background: var(--color-ink);
+    position: absolute; left: 0; transition: all 0.3s;
+  }
+  .nav-hamburger span:nth-child(1) { top: 0; }
+  .nav-hamburger span:nth-child(2) { top: 50%; transform: translateY(-50%); }
+  .nav-hamburger span:nth-child(3) { bottom: 0; }
+
+  /* ═══ HERO ═══ */
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(160deg, var(--color-cream) 0%, var(--color-blush-lightest) 50%, #f5eaed 100%);
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -20%; right: -10%;
+    width: 55vw; height: 55vw; border-radius: 50%;
+    background: radial-gradient(circle, rgba(142, 35, 62, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -15%; left: -8%;
+    width: 45vw; height: 45vw; border-radius: 50%;
+    background: radial-gradient(circle, rgba(128, 0, 25, 0.03) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-inner {
+    max-width: var(--max-width); margin: 0 auto;
+    padding: 140px clamp(24px, 4vw, 48px) var(--section-padding);
+    position: relative; z-index: 2;
+  }
+  .hero-label {
+    display: inline-block; font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-crimson);
+    margin-bottom: 28px; position: relative; padding-left: 40px;
+    opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+  }
+  .hero-label::before {
+    content: ''; position: absolute; left: 0; top: 50%;
+    width: 28px; height: 1.5px; background: var(--color-crimson);
+  }
+  .hero h1 {
+    font-family: var(--font-serif); font-size: clamp(2.4rem, 5vw, 4rem);
+    font-weight: 400; line-height: 1.2; max-width: 800px; color: var(--color-ink);
+    margin-bottom: 32px; opacity: 0; animation: fadeUp 0.8s 0.4s forwards;
+  }
+  .hero h1 em { font-style: italic; color: var(--color-deep); }
+  .hero-description {
+    font-size: 1.15rem; line-height: 1.8; color: var(--color-ink-light);
+    max-width: 640px; opacity: 0; animation: fadeUp 0.8s 0.6s forwards;
+  }
+  .hero-cta {
+    margin-top: 48px; display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+  }
+  .scroll-indicator {
+    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+    opacity: 0; animation: fadeUp 0.8s 1.2s forwards;
+  }
+  .scroll-indicator span {
+    display: block; width: 1.5px; height: 40px;
+    background: linear-gradient(to bottom, var(--color-crimson), transparent);
+    margin: 0 auto; animation: scrollPulse 2s infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ═══ SHARED ═══ */
+  section { padding: var(--section-padding) clamp(24px, 4vw, 48px); }
+  .section-inner { max-width: var(--max-width); margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--color-crimson); margin-bottom: 16px;
+  }
+  .section-heading {
+    font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400; line-height: 1.25; color: var(--color-ink); max-width: 680px;
+  }
+  .section-text {
+    font-size: 1.05rem; line-height: 1.85; color: var(--color-ink-light);
+    max-width: 640px; margin-top: 20px;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 32px; font-family: var(--font-sans); font-size: 0.88rem;
+    font-weight: 600; letter-spacing: 0.03em; border-radius: 4px;
+    text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none;
+  }
+  .btn-primary { background: var(--color-deep); color: #fff; border: 2px solid var(--color-deep); }
+  .btn-primary:hover { background: var(--color-crimson); border-color: var(--color-crimson); }
+  .btn-outline { background: transparent; color: var(--color-ink); border: 2px solid var(--color-blush-light); }
+  .btn-outline:hover { border-color: var(--color-crimson); color: var(--color-crimson); }
+  .btn-arrow { transition: transform 0.3s; }
+  .btn:hover .btn-arrow { transform: translateX(4px); }
+
+  /* ═══ PROBLEM ═══ */
+  .problem { background: var(--color-deep); color: #fff; position: relative; overflow: hidden; }
+  .problem::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+  .problem .section-label { color: var(--color-blush); }
+  .problem .section-heading { color: #fff; }
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 48px; }
+  .problem-quote {
+    font-family: var(--font-serif); font-size: 1.3rem; font-style: italic;
+    line-height: 1.7; color: rgba(255,255,255,0.9);
+    border-left: 3px solid var(--color-berry); padding-left: 28px; margin-top: 40px;
+  }
+
+  /* ═══ WHAT WE DO ═══ */
+  .what-we-do { background: var(--color-cream); }
+  .work-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 60px; }
+  .work-card {
+    background: #fff; border-radius: 6px; padding: 48px 40px;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(128, 0, 25, 0.06); transition: all 0.4s ease;
+  }
+  .work-card:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(128, 0, 25, 0.08); border-color: transparent; }
+  .work-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; opacity: 0; transition: opacity 0.4s; }
+  .work-card:first-child::before { background: linear-gradient(90deg, var(--color-crimson), var(--color-berry)); }
+  .work-card:nth-child(2)::before { background: linear-gradient(90deg, var(--color-berry), var(--color-rose)); }
+  .work-card:hover::before { opacity: 1; }
+  .work-card-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px; }
+  .work-card:first-child .work-card-icon { background: var(--color-blush-lightest); }
+  .work-card:nth-child(2) .work-card-icon { background: #fdf2f0; }
+  .work-card-number { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-berry); margin-bottom: 20px; }
+  .work-card h3 { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 600; line-height: 1.3; color: var(--color-ink); margin-bottom: 16px; }
+  .work-card p { font-size: 0.98rem; line-height: 1.8; color: var(--color-ink-light); }
+
+  /* ═══ JEEVIKA FEATURE ═══ */
+  .jeevika-feature { background: var(--color-blush-lightest); }
+  .jeevika-inner { max-width: var(--max-width); margin: 0 auto; }
+  .jeevika-blockquote {
+    background: #fff; border-left: 5px solid var(--color-deep);
+    border-radius: 0 8px 8px 0; padding: clamp(32px, 5vw, 48px);
+    margin-top: 40px;
+  }
+  .jeevika-blockquote p { font-size: 1.05rem; line-height: 1.85; color: var(--color-ink-light); margin-bottom: 16px; }
+  .jeevika-blockquote p:last-child { margin-bottom: 0; }
+  .jeevika-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+  .jeevika-photos img { width: 100%; height: 340px; object-fit: cover; border-radius: 6px; background: var(--color-blush-light); }
+
+  /* ═══ RESEARCH OUTPUTS ═══ */
+  .research { background: var(--color-cream); }
+  .research-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; margin-top: 60px; }
+  .research-card { text-align: center; transition: transform 0.3s; }
+  .research-card:hover { transform: translateY(-4px); }
+  .research-card a { text-decoration: none; }
+  .research-thumb {
+    width: 100%; aspect-ratio: 1/1; border-radius: 6px; overflow: hidden;
+    margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s; background: var(--color-blush-light);
+  }
+  .research-card:hover .research-thumb { box-shadow: 0 8px 32px rgba(128, 0, 25, 0.14); }
+  .research-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .research-title {
+    font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;
+    color: var(--color-deep); line-height: 1.4;
+    text-decoration: underline; text-underline-offset: 3px;
+    text-decoration-color: rgba(128, 0, 25, 0.3); transition: text-decoration-color 0.3s;
+  }
+  .research-card:hover .research-title { text-decoration-color: var(--color-deep); }
+
+  /* ═══ TEAM ═══ */
+  .team { background: var(--color-blush-lightest); position: relative; }
+  .team::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+    background: linear-gradient(90deg, var(--color-deep), var(--color-crimson), var(--color-berry), var(--color-rose));
+  }
+  .team-intro { text-align: center; max-width: 600px; margin: 0 auto 60px; }
+  .team-intro .section-heading { max-width: 100%; text-align: center; }
+  .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; }
+  .team-grid-row-2 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 36px; }
+  .team-card { text-align: center; transition: transform 0.3s ease; }
+  .team-card:hover { transform: translateY(-4px); }
+  .team-photo-wrapper {
+    width: 100%; aspect-ratio: 5/6; border-radius: 6px; overflow: hidden;
+    margin-bottom: 20px; background: var(--color-blush-light);
+    box-shadow: 0 4px 20px rgba(128, 0, 25, 0.08); transition: box-shadow 0.3s;
+  }
+  .team-card:hover .team-photo-wrapper { box-shadow: 0 8px 32px rgba(128, 0, 25, 0.14); }
+  .team-photo-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .team-name { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--color-deep); margin-bottom: 4px; }
+  .team-role { font-size: 0.85rem; color: var(--color-gray-text); line-height: 1.5; }
+
+  /* ═══ FACTS ═══ */
+  .facts-strip { background: var(--color-crimson); padding: 0; }
+  .facts-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .fact-item { padding: 52px clamp(24px, 3vw, 48px); text-align: center; position: relative; }
+  .fact-item:not(:last-child)::after { content: ''; position: absolute; right: 0; top: 25%; height: 50%; width: 1px; background: rgba(255,255,255,0.15); }
+  .fact-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-blush-light); margin-bottom: 12px; }
+  .fact-value { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 400; color: #fff; line-height: 1.5; }
+
+  /* ═══ VISION ═══ */
+  .vision { background: var(--color-blush-lightest); text-align: center; position: relative; overflow: hidden; }
+  .vision::before { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; height: 500px; border-radius: 50%; border: 1px solid rgba(128, 0, 25, 0.04); pointer-events: none; }
+  .vision::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; border-radius: 50%; border: 1px solid rgba(128, 0, 25, 0.02); pointer-events: none; }
+  .vision .section-inner { max-width: 780px; position: relative; z-index: 2; }
+  .vision-text { font-family: var(--font-serif); font-size: clamp(1.3rem, 2.5vw, 1.65rem); font-weight: 300; line-height: 1.75; color: var(--color-ink); margin-top: 28px; }
+  .vision-text em { font-style: italic; color: var(--color-deep); font-weight: 400; }
+
+  /* ═══ SUPPORTED ═══ */
+  .supported { background: var(--color-cream); text-align: center; }
+  .supported .section-inner { max-width: 800px; }
+  .supported-text { font-size: 1rem; color: var(--color-ink-light); line-height: 1.8; margin-top: 20px; }
+  .partner-logos { display: flex; justify-content: center; align-items: center; gap: 24px; margin-top: 48px; flex-wrap: wrap; }
+  .partner-logo { font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; color: var(--color-gray-text); padding: 18px 30px; border: 1px solid var(--color-blush-light); border-radius: 4px; background: #fff; transition: all 0.3s; }
+  .partner-logo:hover { border-color: var(--color-crimson); color: var(--color-crimson); box-shadow: 0 4px 16px rgba(128, 0, 25, 0.08); }
+
+  /* ═══ CONTACT ═══ */
+  .contact { background: var(--color-cream); }
+  .contact-inner { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: clamp(40px, 8vw, 100px); align-items: start; }
+  .contact-info h2 { font-family: var(--font-serif); font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 400; color: var(--color-deep); margin-bottom: 20px; }
+  .contact-info p { font-size: 1rem; color: var(--color-ink-light); line-height: 1.7; margin-bottom: 12px; }
+  .contact-info a { color: var(--color-crimson); text-decoration: underline; text-underline-offset: 3px; }
+  .contact-info a:hover { color: var(--color-deep); }
+  .contact-opportunities { margin-top: 40px; }
+  .contact-opportunities h3 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--color-crimson); margin-bottom: 8px; }
+  .contact-opportunities p { font-size: 0.95rem; font-style: italic; color: var(--color-ink-muted); }
+  .contact-form label { display: block; font-size: 0.88rem; font-weight: 500; color: var(--color-ink-light); margin-bottom: 6px; }
+  .contact-form label span { color: var(--color-ink-muted); font-weight: 400; }
+  .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+  .contact-form input, .contact-form textarea {
+    width: 100%; padding: 14px 16px; font-family: var(--font-sans); font-size: 0.95rem;
+    border: 1.5px solid var(--color-sand); border-radius: 4px; background: #fff;
+    transition: border-color 0.2s; color: var(--color-ink); outline: none;
+  }
+  .contact-form input:focus, .contact-form textarea:focus { border-color: var(--color-crimson); }
+  .contact-form textarea { resize: vertical; min-height: 140px; }
+  .contact-form .form-group { margin-bottom: 20px; }
+  .btn-send {
+    background: var(--color-deep); color: #fff; border: none; border-radius: 4px;
+    padding: 14px 40px; font-family: var(--font-sans); font-size: 0.9rem;
+    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+    cursor: pointer; transition: background 0.3s;
+  }
+  .btn-send:hover { background: var(--color-crimson); }
+
+  /* ═══ FOOTER ═══ */
+  footer { background: #1c0a10; color: rgba(255,255,255,0.6); padding: 60px clamp(24px, 4vw, 48px) 40px; }
+  .footer-inner { max-width: var(--max-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: start; flex-wrap: wrap; gap: 40px; }
+  .footer-logo img { height: 32px; width: auto; filter: brightness(0) invert(1); margin-bottom: 14px; }
+  .footer-tagline { font-size: 0.88rem; line-height: 1.6; max-width: 340px; color: rgba(255,255,255,0.4); }
+  .footer-links { display: flex; gap: 48px; }
+  .footer-col h4 { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 16px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 8px; }
+  .footer-col a { font-size: 0.9rem; color: rgba(255,255,255,0.55); text-decoration: none; transition: color 0.2s; }
+  .footer-col a:hover { color: var(--color-blush); }
+  .footer-bottom { max-width: var(--max-width); margin: 48px auto 0; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 0.78rem; color: rgba(255,255,255,0.25); display: flex; justify-content: space-between; align-items: center; }
+
+  /* ═══ ANIMATIONS ═══ */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ═══ MOBILE NAV ═══ */
+  .mobile-nav { display: none; position: fixed; top: 72px; left: 0; right: 0; background: var(--color-cream); padding: 24px; border-bottom: 1px solid var(--color-blush-light); z-index: 99; }
+  .mobile-nav.active { display: block; }
+  .mobile-nav a { display: block; padding: 14px 0; font-size: 0.95rem; font-weight: 500; color: var(--color-ink-light); text-decoration: none; border-bottom: 1px solid var(--color-blush-lightest); }
+  .mobile-nav a:last-child { border-bottom: none; }
+  .mobile-nav a:hover { color: var(--color-crimson); }
+
+  /* ═══ RESPONSIVE ═══ */
+  @media (max-width: 900px) {
+    .problem-grid { grid-template-columns: 1fr; gap: 40px; }
+    .work-cards { grid-template-columns: 1fr; }
+    .jeevika-photos { grid-template-columns: 1fr; }
+    .jeevika-photos img { height: 260px; }
+    .research-grid { grid-template-columns: 1fr 1fr; }
+    .team-grid, .team-grid-row-2 { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+    .facts-grid { grid-template-columns: 1fr; }
+    .fact-item:not(:last-child)::after { display: none; }
+    .fact-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .contact-inner { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; }
+    .footer-links { flex-direction: column; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  }
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: block; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 2.8rem); }
+    .hero-cta { flex-direction: column; }
+    .btn { justify-content: center; }
+    .research-grid { grid-template-columns: 1fr; max-width: 400px; margin: 60px auto 0; }
+    .team-grid, .team-grid-row-2 { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .partner-logos { flex-direction: column; gap: 16px; }
+    .work-card { padding: 36px 28px; }
+    .contact-form .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><img src="images/logo.png" alt="GRAMA"></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#work">Our Work</a></li>
+      <li><a href="#team">Our Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="nav-linkedin" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a></li>
+    </ul>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeMobileNav()">About</a>
+  <a href="#problem" onclick="closeMobileNav()">The Problem</a>
+  <a href="#work" onclick="closeMobileNav()">Our Work</a>
+  <a href="#team" onclick="closeMobileNav()">Our Team</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div class="hero-label">About Us</div>
+    <h1>Governance works better when those <em>closest to it</em> have a voice</h1>
+    <p class="hero-description">GRAMA (Governance Research and Accountability for Meaningful Advancement) is a research and policy initiative working to strengthen the accountability of public institutions by centering the perspectives of those they are meant to serve: last-mile citizens, frontline workers who connect them to the state, and local elected officials who represent them.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">Our Work <span class="btn-arrow">&rarr;</span></a>
+      <a href="#vision" class="btn btn-outline">Read Our Vision</a>
+    </div>
+  </div>
+  <div class="scroll-indicator"><span></span></div>
+</section>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-inner">
+    <div class="section-label reveal">The Problem</div>
+    <h2 class="section-heading reveal" style="max-width:600px;">Policy is often made far from the people it affects</h2>
+    <div class="problem-grid">
+      <div class="reveal">
+        <p class="section-text" style="color:rgba(255,255,255,0.75);">Across India's governance landscape, decisions flow downward — through administrative hierarchies, programme guidelines, and data systems designed for upward reporting. The people at the receiving end of policy — rural citizens navigating public programmes, and local government officials tasked with delivering them — rarely shape the information, feedback, or evidence that drives reform.</p>
+      </div>
+      <div class="reveal">
+        <p class="problem-quote">GRAMA exists to change this. We believe that effective governance requires not just better data or better research, but a fundamental reorientation: building systems that listen to those at the bottom, and institutions that learn from what they hear.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT WE DO -->
+<section class="what-we-do" id="work">
+  <div class="section-inner">
+    <div class="section-label reveal">What We Do</div>
+    <h2 class="section-heading reveal">Research and systems,<br>working together</h2>
+    <p class="section-text reveal">Our work operates through two complementary efforts — each grounded in the conviction that voice must be embedded not just in advocacy, but in the architecture of governance itself.</p>
+    <div class="work-cards">
+      <div class="work-card reveal">
+        <div class="work-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#8E233E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+        <div class="work-card-number">Line of Work I</div>
+        <h3>Field-Based Research on Local Governance</h3>
+        <p>We conduct rigorous, field-grounded research on how local governance actually works — studying management practices, decision-making, and the role of voice within rural institutions using both quantitative and qualitative methods. Our aim is to generate evidence that doesn't just describe problems but informs how policy is designed and delivered.</p>
+      </div>
+      <div class="work-card reveal">
+        <div class="work-card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A74D63" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="work-card-number">Line of Work II</div>
+        <h3>Data Systems That Empower</h3>
+        <p>We partner with government programmes to reimagine administrative data — not as a top-down reporting tool, but as infrastructure that empowers frontline workers and captures the experiences of beneficiaries. In Bihar, we are collaborating with JEEViKA, one of India's largest rural livelihoods programmes, to build prototype beneficiary feedback mechanisms directly into the programme's data architecture, and to design evidence-based peer learning processes for last-mile cadre.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JEEVIKA FEATURE -->
+<section class="jeevika-feature">
+  <div class="jeevika-inner">
+    <div class="section-label reveal">Current Partnership</div>
+    <h2 class="section-heading reveal">Empowering Institutions, Empowering Women: Supporting JEEViKA's Transformation</h2>
+    <div class="jeevika-blockquote reveal">
+      <p>JEEViKA, Bihar's flagship government programme for self-help groups and rural livelihoods, spans 1.4 crore households across the state. GRAMA is partnering with JEEViKA to strengthen its data systems and accountability frameworks as part of a long-term organisational transformation.</p>
+      <p>Through this collaboration, JEEViKA is evolving into a more data-driven and responsive institution. GRAMA's work focuses on building tools and feedback systems that capture real-time insights from the field, streamline information flows across levels, and enhance the use of data for decision-making.</p>
+    </div>
+    <div class="jeevika-photos reveal">
+      <!-- Replace with: images/jeevika-meeting.jpg and images/jeevika-partnership.jpg -->
+      <img src="images/jeevika-meeting.jpg" alt="Community meeting with SHG members">
+      <img src="images/jeevika-partnership.jpg" alt="Government partnership">
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH OUTPUTS -->
+<section class="research">
+  <div class="section-inner">
+    <div class="section-label reveal" style="text-align:center;">Research</div>
+    <h2 class="section-heading reveal" style="max-width:100%;text-align:center;">Research &amp; Outputs</h2>
+    <div class="research-grid">
+      <div class="research-card reveal"><a href="#"><div class="research-thumb"><img src="images/research-jeevika.jpg" alt="Current Work with JEEViKA"></div><div class="research-title">Current Work with JEEViKA</div></a></div>
+      <div class="research-card reveal"><a href="#"><div class="research-thumb"><img src="images/research-naljal.jpg" alt="Nal Jal Implementation"></div><div class="research-title">Research Output – Nal Jal Implementation</div></a></div>
+      <div class="research-card reveal"><a href="#"><div class="research-thumb"><img src="images/research-political.jpg" alt="JEEViKA and Political Participation"></div><div class="research-title">Research Output – JEEViKA and Political Participation</div></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="section-inner">
+    <div class="team-intro">
+      <div class="section-label reveal">Our Team</div>
+      <h2 class="section-heading reveal">The people behind GRAMA</h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal"><div class="team-photo-wrapper"><img src="images/mr-sharan.jpg" alt="M.R. Sharan"></div><div class="team-name">M.R. Sharan</div><div class="team-role">Founder and CEO</div></div>
+      <div class="team-card reveal"><div class="team-photo-wrapper"><img src="images/nandini-gupta.jpg" alt="Nandini Gupta"></div><div class="team-name">Nandini Gupta</div><div class="team-role">Head – Strategy &amp; Impact</div></div>
+      <div class="team-card reveal"><div class="team-photo-wrapper"><img src="images/munish-sharma.jpg" alt="Munish Sharma"></div><div class="team-name">Munish Sharma</div><div class="team-role">Manager – Research &amp; Government Partnerships</div></div>
+      <div class="team-card reveal"><div class="team-photo-wrapper"><img src="images/chanchal-kumar-singh.jpg" alt="Chanchal Kumar Singh"></div><div class="team-name">Chanchal Kumar Singh</div><div class="team-role">Survey and Field Operations Lead</div></div>
+    </div>
+    <div class="team-grid-row-2">
+      <div class="team-card reveal"><div class="team-photo-wrapper"><img src="images/dhruv-ramani.jpg" alt="Dhruv Ramani"></div><div class="team-name">Dhruv Ramani</div><div class="team-role">Technology and Data System Advisor</div></div>
+      <div class="team-card reveal"><div class="team-photo-wrapper"><img src="images/ankita-baidya.jpg" alt="Ankita Baidya"></div><div class="team-name">Ankita Baidya</div><div class="team-role">Senior Research Analyst</div></div>
+      <div class="team-card reveal"><div class="team-photo-wrapper"><img src="images/suprabath-reddy.jpg" alt="Suprabath Reddy"></div><div class="team-name">Suprabath Reddy</div><div class="team-role">Research Analyst</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FACTS -->
+<section class="facts-strip">
+  <div class="facts-grid">
+    <div class="fact-item reveal"><div class="fact-label">Based In</div><div class="fact-value">Patna, Bihar</div></div>
+    <div class="fact-item reveal"><div class="fact-label">Established</div><div class="fact-value">Founded in 2024</div></div>
+    <div class="fact-item reveal"><div class="fact-label">Supported By</div><div class="fact-value">Bill &amp; Melinda Gates Foundation via University of Maryland</div></div>
+  </div>
+</section>
+
+<!-- VISION -->
+<section class="vision" id="vision">
+  <div class="section-inner">
+    <div class="section-label reveal">Our Vision</div>
+    <h2 class="section-heading reveal" style="max-width:100%;text-align:center;">A governance shaped by those closest to it</h2>
+    <p class="vision-text reveal">We envision governance that is shaped by those closest to it — where research, data, and advocacy come together to ensure that the <em>voices of those furthest from power</em> are not just heard, but acted upon.</p>
+  </div>
+</section>
+
+<!-- SUPPORTED -->
+<section class="supported">
+  <div class="section-inner">
+    <div class="section-label reveal">Our Partners</div>
+    <h2 class="section-heading reveal" style="max-width:100%;text-align:center;">Institutional Support</h2>
+    <p class="supported-text reveal">GRAMA's work is supported by a grant of the Bill &amp; Melinda Gates Foundation via an institutional partnership with the University of Maryland, College Park.</p>
+    <div class="partner-logos reveal">
+      <div class="partner-logo">Bill &amp; Melinda Gates Foundation</div>
+      <div class="partner-logo">University of Maryland</div>
+      <div class="partner-logo">JEEViKA / BRLPS</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <div class="section-label reveal">Get In Touch</div>
+      <h2 class="reveal">Contact Us</h2>
+      <p class="reveal">Interested in working together? Fill out some info and we will be in touch shortly.</p>
+      <p class="reveal"><a href="mailto:gramagovernance@gmail.com">gramagovernance@gmail.com</a></p>
+      <div class="contact-opportunities reveal">
+        <h3>Current Opportunities:</h3>
+        <p>Not now but opening soon</p>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div><label>First Name <span>(required)</span></label><input type="text" required></div>
+        <div><label>Last Name <span>(required)</span></label><input type="text" required></div>
+      </div>
+      <div class="form-group"><label>Email <span>(required)</span></label><input type="email" required></div>
+      <div class="form-group"><label>Message <span>(required)</span></label><textarea required></textarea></div>
+      <button type="button" class="btn-send" onclick="alert('To enable form submissions, connect to Formspree.io or Netlify Forms.')">SEND</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo"><img src="images/logo.png" alt="GRAMA"></div>
+      <p class="footer-tagline">Governance Research and Accountability for Meaningful Advancement</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col"><h4>Navigate</h4><ul><li><a href="#about">About</a></li><li><a href="#problem">The Problem</a></li><li><a href="#work">Our Work</a></li><li><a href="#team">Our Team</a></li></ul></div>
+      <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:gramagovernance@gmail.com">gramagovernance@gmail.com</a></li><li><a href="#">LinkedIn</a></li></ul></div>
+      <div class="footer-col"><h4>Location</h4><ul><li><a href="#">Patna, Bihar</a></li><li><a href="#">India</a></li></ul></div>
+    </div>
+  </div>
+  <div class="footer-bottom"><span>&copy; 2026 GRAMA. All rights reserved.</span><span>A research initiative of the University of Maryland</span></div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  function toggleMobileNav() { document.getElementById('mobileNav').classList.toggle('active'); }
+  function closeMobileNav() { document.getElementById('mobileNav').classList.remove('active'); }
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.boxShadow = window.pageYOffset > 80 ? '0 2px 24px rgba(128, 0, 25, 0.06)' : 'none';
+  });
+</script>
+</body>
+</html>
