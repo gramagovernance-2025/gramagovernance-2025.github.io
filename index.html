@@ -84,7 +84,17 @@
   position: relative; overflow: hidden;
   background: linear-gradient(160deg, var(--color-cream) 0%, var(--color-blush-lightest) 50%, #faf6f7 100%);
 }
-background: var(--color-cream);
+.hero::before {
+  content: ''; position: absolute; top: -20%; right: -10%;
+  width: 55vw; height: 55vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(142, 35, 62, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: ''; position: absolute; bottom: -15%; left: -8%;
+  width: 45vw; height: 45vw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(128, 0, 25, 0.03) 0%, transparent 70%);
+  pointer-events: none;
 }
 .hero-inner {
   max-width: var(--max-width); margin: 0 auto;
