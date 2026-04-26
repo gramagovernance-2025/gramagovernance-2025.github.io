@@ -336,6 +336,11 @@
     cursor: pointer; transition: background 0.3s;
   }
   .contact { background: var(--color-cream); border-top: 3px solid linear-gradient(90deg, var(--color-deep), var(--color-crimson), var(--color-berry)); }
+  .contact { background: var(--color-cream); position: relative; }
+  .contact::before {
+  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+  background: linear-gradient(90deg, var(--color-deep), var(--color-crimson), var(--color-berry), var(--color-rose));
+}
   .btn-send:hover { background: var(--color-crimson); }
 
   /* ═══ FOOTER ═══ */
