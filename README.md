@@ -27,7 +27,7 @@ Team photos: crop to 5:6 ratio (~400×480px). Research thumbnails: square (~600�
 
 1. Create repo → upload `index.html`, `images/` folder, `README.md`
 2. Settings → Pages → main branch → / (root) → Save
-3. Live at `https://yourusername.github.io/repo-name/`
+3. Live at `https://gramagovernance-2025.github.io/repo-name/`
 
 ## Contact Form
 
