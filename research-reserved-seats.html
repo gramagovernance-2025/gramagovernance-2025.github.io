@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nal Jal Implementation — GRAMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,300;1,8..60,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-blush-lightest: #F8E9EC; --color-blush-light: #E8C4CB;
+    --color-crimson: #8E233E; --color-deep: #800019; --color-berry: #A74D63;
+    --color-ink: #1a1a1a; --color-ink-light: #4a4a4a; --color-ink-muted: #7a7a7a;
+    --color-cream: #FDFBFB; --color-sand: #e8dfe1;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+    --max-width: 1200px;
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-sans); color: var(--color-ink); background: var(--color-cream); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(253,251,251,0.92); backdrop-filter: blur(14px); border-bottom: 1px solid rgba(128,0,25,0.06); }
+  .nav-inner { max-width: var(--max-width); margin: 0 auto; padding: 0 clamp(24px,4vw,48px); display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .nav-logo img { height: 38px; width: auto; }
+  .nav-back { font-size: 0.88rem; font-weight: 500; color: var(--color-crimson); text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .nav-back:hover { color: var(--color-deep); }
+
+  .page { max-width: 760px; margin: 0 auto; padding: 120px clamp(24px,4vw,48px) 80px; }
+  .page-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-crimson); margin-bottom: 16px; }
+  .page h1 { font-family: var(--font-serif); font-size: clamp(1.8rem,3.5vw,2.4rem); font-weight: 700; line-height: 1.25; color: var(--color-ink); margin-bottom: 12px; }
+  .page-meta { font-size: 0.88rem; color: var(--color-ink-muted); margin-bottom: 40px; }
+
+  .summary { background: var(--color-blush-lightest); border-left: 5px solid var(--color-deep); border-radius: 0 8px 8px 0; padding: clamp(28px,4vw,44px); margin-bottom: 48px; }
+  .summary p { font-size: 1.05rem; line-height: 1.85; color: var(--color-ink-light); margin-bottom: 16px; }
+  .summary p:last-child { margin-bottom: 0; }
+
+  .pdf-download { background: var(--color-ink); border-radius: 8px; padding: 40px; text-align: center; margin-bottom: 48px; }
+  .pdf-download p { font-size: 1rem; font-style: italic; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 20px; }
+  .pdf-btn { display: inline-flex; align-items: center; gap: 8px; background: #d4a853; color: var(--color-ink); border: none; border-radius: 4px; padding: 14px 32px; font-family: var(--font-sans); font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: background 0.3s; }
+  .pdf-btn:hover { background: #c49a45; }
+
+  .back-link { display: inline-flex; align-items: center; gap: 6px; font-size: 0.95rem; color: var(--color-crimson); text-decoration: none; font-weight: 500; margin-bottom: 60px; }
+  .back-link:hover { color: var(--color-deep); }
+
+  footer { background: #1c0a10; color: rgba(255,255,255,0.6); padding: 40px clamp(24px,4vw,48px); }
+  .footer-inner { max-width: var(--max-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-inner img { height: 28px; filter: brightness(0) invert(1); }
+  .footer-inner span { font-size: 0.78rem; color: rgba(255,255,255,0.3); }
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner"><a href="index.html" class="nav-logo"><img src="images/logo.png" alt="GRAMA"></a><a href="index.html#research" class="nav-back">← Back to Research</a></div></nav>
+
+<div class="page">
+  <div class="page-label">Policy Brief</div>
+  <h1>PHED vs Ward Members: How Implementing Agency Affects Households' Access to Piped Water in Bihar</h1>
+  <p class="page-meta">Based on research by GRAMA · June 2024</p>
+
+  <div class="summary">
+    <p>Bihar's Har Ghar Nal ka Jal project aims to provide every household with piped water. In 2017, implementation was decentralised to elected ward members. But in wards where water quality required treatment, the state's Public Health Engineering Department (PHED) took over. Then in 2023, PHED was given responsibility for all wards, on the claim that ward members lacked the expertise.</p>
+    <p>This brief tests that claim. Using village-level data on piped water access and econometric analysis, we find the opposite: wards implemented by PHED have 7.9%–21.8% fewer water connections than those run by ward members. Had ward members retained responsibility across the board, an estimated 1.77–4.36 lakh additional households would have had access to piped water by 2020.</p>
+    <p>The implication is clear: PHED should continue to provide technical expertise on water quality, but placing implementation in the hands of elected ward members leads to greater access and deepens local accountability in the process.</p>
+  </div>
+
+  <div class="pdf-download">
+    <p>Who delivers public services better — state agencies or elected local representatives? This brief brings data to a question that was settled by assumption.</p>
+    <a href="pdfs/naljal-brief.pdf" class="pdf-btn" target="_blank">Read the Full Brief ↓</a>
+  </div>
+
+  <a href="index.html#research" class="back-link">← Back to all research</a>
+</div>
+
+<footer><div class="footer-inner"><img src="images/logo.png" alt="GRAMA"><span>© 2026 GRAMA. All rights reserved.</span></div></footer>
+
+</body>
+</html>
