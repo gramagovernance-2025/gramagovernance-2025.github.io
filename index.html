@@ -344,6 +344,8 @@
   @media (max-width: 900px) {
     .problem-grid { grid-template-columns: 1fr; gap: 40px; }
     .work-cards { grid-template-columns: 1fr; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-circle { width: 300px; height: 300px; margin: 0 auto; }
     .jeevika-photos { grid-template-columns: 1fr; }
     .jeevika-photos img { height: 260px; }
     .research-grid { grid-template-columns: 1fr 1fr; }
@@ -398,15 +400,21 @@
 <!-- HERO -->
 <section class="hero" id="about">
   <div class="hero-inner">
-    <div class="hero-label">About Us</div>
-    <h1>Governance works better when those <em>closest to it</em> have a voice</h1>
-    <p class="hero-description">GRAMA (Governance Research and Accountability for Meaningful Advancement) is a research and policy initiative working to strengthen the accountability of public institutions by centering the perspectives of those they are meant to serve: last-mile citizens, frontline workers who connect them to the state, and local elected officials who represent them.</p>
-    <div class="hero-cta">
-      <a href="#work" class="btn btn-primary">Our Work <span class="btn-arrow">&rarr;</span></a>
-      <a href="#vision" class="btn btn-outline">Read Our Vision</a>
+    <div class="hero-image-col">
+      <div class="hero-circle">
+        <img src="images/hero-circle.jpg" alt="Women's community meeting in rural Bihar">
+      </div>
+    </div>
+    <div class="hero-text-col">
+      <div class="hero-label">About Us</div>
+      <h1>Governance works better when those <em>closest to it</em> have a voice</h1>
+      <p class="hero-description">GRAMA (Governance Research and Accountability for Meaningful Advancement) is a research and policy initiative working to strengthen the accountability of public institutions by centering the perspectives of those they are meant to serve: last-mile citizens, frontline workers who connect them to the state, and local elected officials who represent them.</p>
+      <div class="hero-cta">
+        <a href="#work" class="btn btn-primary">Our Work <span class="btn-arrow">&rarr;</span></a>
+        <a href="#vision" class="btn btn-outline">Read Our Vision</a>
+      </div>
     </div>
   </div>
-  <div class="scroll-indicator"><span></span></div>
 </section>
 
 <!-- PROBLEM -->
