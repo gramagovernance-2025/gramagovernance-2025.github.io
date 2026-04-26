@@ -219,37 +219,34 @@
   .jeevika-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
   .jeevika-photos img { width: 100%; height: 340px; object-fit: cover; border-radius: 6px; background: var(--color-blush-light); }
 
-  /* ═══ RESEARCH OUTPUTS ═══ */
-.research { background: var(--color-cream); }
-.research-carousel-wrapper { position: relative; margin-top: 60px; overflow: hidden; }
+ /* ═══ RESEARCH OUTPUTS ═══ */
+.research { background: var(--color-cream); overflow: hidden; }
+.research-carousel-wrapper { position: relative; margin-top: 60px; }
+.research-viewport { overflow: hidden; }
 .research-grid {
   display: flex; transition: transform 0.5s ease;
-  gap: 36px;
 }
 .research-card {
-  min-width: calc(33.333% - 24px); text-align: center; flex-shrink: 0;
-  transition: transform 0.3s;
+  width: calc(33.333% - 24px); flex-shrink: 0;
+  margin-right: 36px; text-align: center;
 }
-.research-card:hover { transform: translateY(-4px); }
-.research-card a { text-decoration: none; }
+.research-card a { text-decoration: none; display: block; }
 .research-thumb {
   width: 100%; aspect-ratio: 1/1; border-radius: 6px; overflow: hidden;
   margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  transition: box-shadow 0.3s; background: var(--color-blush-light);
+  background: var(--color-blush-light);
 }
-.research-card:hover .research-thumb { box-shadow: 0 8px 32px rgba(128, 0, 25, 0.14); }
 .research-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.research-card:hover .research-thumb { box-shadow: 0 8px 32px rgba(128, 0, 25, 0.14); }
 .research-title {
   font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;
   color: var(--color-deep); line-height: 1.4;
   text-decoration: underline; text-underline-offset: 3px;
-  text-decoration-color: rgba(128, 0, 25, 0.3); transition: text-decoration-color 0.3s;
+  text-decoration-color: rgba(128, 0, 25, 0.3);
 }
 .research-card:hover .research-title { text-decoration-color: var(--color-deep); }
 
-.carousel-arrows {
-  display: flex; justify-content: center; gap: 16px; margin-top: 40px;
-}
+.carousel-arrows { display: flex; justify-content: center; gap: 16px; margin-top: 40px; }
 .carousel-btn {
   width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-blush-light);
   background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
@@ -258,10 +255,7 @@
 .carousel-btn:hover { border-color: var(--color-crimson); background: var(--color-crimson); color: #fff; }
 .carousel-btn:disabled { opacity: 0.3; cursor: default; }
 .carousel-btn:disabled:hover { border-color: var(--color-blush-light); background: #fff; color: var(--color-crimson); }
-
-.carousel-dots {
-  display: flex; justify-content: center; gap: 8px; margin-top: 20px;
-}
+.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
 .carousel-dot {
   width: 8px; height: 8px; border-radius: 50%; background: var(--color-blush-light);
   border: none; cursor: pointer; transition: all 0.3s; padding: 0;
@@ -502,26 +496,25 @@
 </section>
 
 <!-- RESEARCH OUTPUTS -->
+<!-- RESEARCH OUTPUTS -->
 <section class="research" id="research">
   <div class="section-inner">
     <div class="section-label reveal" style="text-align:center;">Research</div>
     <h2 class="section-heading reveal" style="max-width:100%;text-align:center;">Research &amp; Outputs</h2>
     <div class="research-carousel-wrapper reveal">
-      <div class="research-grid" id="researchGrid">
-        <div class="research-card"><a href="research-jeevika-work.html"><div class="research-thumb"><img src="images/research-jeevika.png" alt="Current Work with JEEViKA"></div><div class="research-title">Current Work with JEEViKA</div></a></div>
-        <div class="research-card"><a href="research-naljal.html"><div class="research-thumb"><img src="images/research-naljal.png" alt="Nal Jal Implementation"></div><div class="research-title">Research Output – Nal Jal Implementation</div></a></div>
-        <div class="research-card"><a href="research-political.html"><div class="research-thumb"><img src="images/research-political.png" alt="JEEViKA and Political Participation"></div><div class="research-title">Research Output – JEEViKA and Political Participation</div></a></div>
-        <div class="research-card"><a href="research-reserved-seats.html"><div class="research-thumb"><img src="images/research-reserved-seats.png" alt="Reserved Seats Delivery"></div><div class="research-title">Research Output – Reserved Seats Delivery</div></a></div>
-        <div class="research-card"><a href="research-peer-learning.html"><div class="research-thumb"><img src="images/research-peer-learning.png" alt="Peer Learning among Local Politicians"></div><div class="research-title">Research Output – Peer Learning among Local Politicians</div></a></div>
-        <div class="research-card"><a href="research-jeevika-sc.html"><div class="research-thumb"><img src="images/research-jeevika-sc.png" alt="JEEViKA Reach among SC Women"></div><div class="research-title">Research Output – JEEViKA Reach among SC Women</div></a></div>
+      <div class="research-viewport">
+        <div class="research-grid" id="researchGrid">
+          <div class="research-card"><a href="research-jeevika-work.html"><div class="research-thumb"><img src="images/research-jeevika.png" alt="Current Work with JEEViKA"></div><div class="research-title">Current Work with JEEViKA</div></a></div>
+          <div class="research-card"><a href="research-naljal.html"><div class="research-thumb"><img src="images/research-naljal.png" alt="Nal Jal Implementation"></div><div class="research-title">Research Output – Nal Jal Implementation</div></a></div>
+          <div class="research-card"><a href="research-political.html"><div class="research-thumb"><img src="images/research-political.png" alt="JEEViKA and Political Participation"></div><div class="research-title">Research Output – JEEViKA and Political Participation</div></a></div>
+          <div class="research-card"><a href="research-reserved-seats.html"><div class="research-thumb"><img src="images/research-reserved-seats.png" alt="Reserved Seats Delivery"></div><div class="research-title">Research Output – Reserved Seats Delivery</div></a></div>
+          <div class="research-card"><a href="research-peer-learning.html"><div class="research-thumb"><img src="images/research-peer-learning.png" alt="Peer Learning among Local Politicians"></div><div class="research-title">Research Output – Peer Learning among Local Politicians</div></a></div>
+          <div class="research-card"><a href="research-jeevika-sc.html"><div class="research-thumb"><img src="images/research-jeevika-sc.png" alt="JEEViKA Reach among SC Women"></div><div class="research-title">Research Output – JEEViKA Reach among SC Women</div></a></div>
+        </div>
       </div>
       <div class="carousel-arrows">
-        <button class="carousel-btn" id="carouselPrev" aria-label="Previous">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
-        </button>
-        <button class="carousel-btn" id="carouselNext" aria-label="Next">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
-        </button>
+        <button class="carousel-btn" id="carouselPrev" aria-label="Previous"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button class="carousel-btn" id="carouselNext" aria-label="Next"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
       </div>
       <div class="carousel-dots" id="carouselDots"></div>
     </div>
@@ -632,96 +625,33 @@
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.boxShadow = window.pageYOffset > 80 ? '0 2px 24px rgba(128, 0, 25, 0.06)' : 'none';
   });
-  // Carousel
-let currentSlide = 0;
-const track = document.getElementById('researchTrack');
-const dotsContainer = document.getElementById('carouselDots');
-
-function getVisibleCards() {
-  if (window.innerWidth <= 640) return 1;
-  if (window.innerWidth <= 900) return 2;
-  return 3;
-}
-
-function getTotalSlides() {
-  return Math.max(0, 6 - getVisibleCards());
-}
-
-function buildDots() {
-  dotsContainer.innerHTML = '';
-  const total = getTotalSlides() + 1;
-  for (let i = 0; i < total; i++) {
-    const dot = document.createElement('button');
-    dot.className = 'carousel-dot' + (i === currentSlide ? ' active' : '');
-    dot.onclick = () => { currentSlide = i; updateCarousel(); };
-    dotsContainer.appendChild(dot);
-  }
-}
-
-function updateCarousel() {
-  const visible = getVisibleCards();
-  const cardWidth = (100 / visible);
-  const gapPercent = (36 / track.parentElement.offsetWidth) * 100;
-  const offset = currentSlide * (cardWidth + gapPercent);
-  track.style.transform = 'translateX(-' + offset + '%)';
-  document.getElementById('prevBtn').disabled = currentSlide === 0;
-  document.getElementById('nextBtn').disabled = currentSlide >= getTotalSlides();
-  buildDots();
-}
-
-function moveCarousel(dir) {
-  currentSlide = Math.max(0, Math.min(getTotalSlides(), currentSlide + dir));
-  updateCarousel();
-}
-
-// Auto-rotate every 4 seconds
-setInterval(() => {
-  if (currentSlide >= getTotalSlides()) currentSlide = 0;
-  else currentSlide++;
-  updateCarousel();
-}, 4000);
-
-window.addEventListener('resize', () => { currentSlide = 0; updateCarousel(); });
-updateCarousel();
   // Research carousel
 (function() {
-  const grid = document.getElementById('researchGrid');
-  const prevBtn = document.getElementById('carouselPrev');
-  const nextBtn = document.getElementById('carouselNext');
-  const dotsContainer = document.getElementById('carouselDots');
+  var grid = document.getElementById('researchGrid');
+  var prevBtn = document.getElementById('carouselPrev');
+  var nextBtn = document.getElementById('carouselNext');
+  var dotsContainer = document.getElementById('carouselDots');
   if (!grid) return;
 
-  let currentPage = 0;
-
-  function getCardsPerPage() {
-    if (window.innerWidth <= 640) return 1;
-    if (window.innerWidth <= 900) return 2;
-    return 3;
-  }
-
-  function getTotalPages() {
-    const cards = grid.children.length;
-    return Math.ceil(cards / getCardsPerPage());
-  }
+  var currentPage = 0;
+  var cardsPerPage = 3;
+  var totalCards = grid.children.length;
+  var totalPages = Math.ceil(totalCards / cardsPerPage);
 
   function updateCarousel() {
-    const cardsPerPage = getCardsPerPage();
-    const cardEl = grid.children[0];
-    const gap = 36;
-    const cardWidth = cardEl.offsetWidth + gap;
-    const offset = currentPage * cardsPerPage * cardWidth;
-    grid.style.transform = 'translateX(-' + offset + 'px)';
-
+    var percentage = currentPage * 100;
+    grid.style.transform = 'translateX(-' + percentage + '%)';
     prevBtn.disabled = currentPage === 0;
-    nextBtn.disabled = currentPage >= getTotalPages() - 1;
+    nextBtn.disabled = currentPage >= totalPages - 1;
 
-    // Update dots
     dotsContainer.innerHTML = '';
-    for (let i = 0; i < getTotalPages(); i++) {
-      const dot = document.createElement('button');
+    for (var i = 0; i < totalPages; i++) {
+      var dot = document.createElement('button');
       dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
       dot.setAttribute('aria-label', 'Page ' + (i + 1));
-      dot.addEventListener('click', function() { currentPage = i; updateCarousel(); });
+      (function(page) {
+        dot.addEventListener('click', function() { currentPage = page; updateCarousel(); });
+      })(i);
       dotsContainer.appendChild(dot);
     }
   }
@@ -731,12 +661,9 @@ updateCarousel();
   });
 
   nextBtn.addEventListener('click', function() {
-    if (currentPage < getTotalPages() - 1) { currentPage++; updateCarousel(); }
+    if (currentPage < totalPages - 1) { currentPage++; updateCarousel(); }
   });
 
-  window.addEventListener('resize', function() { currentPage = 0; updateCarousel(); });
-
-  // Initialize
   updateCarousel();
 })();
 </script>
