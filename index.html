@@ -228,47 +228,65 @@
   .jeevika-photos img { width: 100%; height: 340px; object-fit: cover; border-radius: 6px; background: var(--color-blush-light); }
 
  /* ═══ RESEARCH OUTPUTS ═══ */
-.research { background: var(--color-cream); overflow: hidden; }
-.research-carousel-wrapper { position: relative; margin-top: 60px; }
-.research-viewport { overflow: hidden; }
-.research-grid {
-  display: flex; transition: transform 0.5s ease;
-}
-.research-card {
-  width: calc(33.333% - 24px); flex-shrink: 0;
-  margin-right: 36px; text-align: center;
-}
-.research-card a { text-decoration: none; display: block; }
-.research-thumb {
-  width: 100%; aspect-ratio: 1/1; border-radius: 6px; overflow: hidden;
-  margin-bottom: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-  background: var(--color-blush-light);
-}
-.research-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.research-card:hover .research-thumb { box-shadow: 0 8px 32px rgba(128, 0, 25, 0.14); }
-.research-title {
-  font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600;
-  color: var(--color-deep); line-height: 1.4;
-  text-decoration: underline; text-underline-offset: 3px;
-  text-decoration-color: rgba(128, 0, 25, 0.3);
-}
-.research-card:hover .research-title { text-decoration-color: var(--color-deep); }
+// Research carousel
+(function() {
+  var grid = document.getElementById('researchGrid');
+  var prevBtn = document.getElementById('carouselPrev');
+  var nextBtn = document.getElementById('carouselNext');
+  var dotsContainer = document.getElementById('carouselDots');
+  if (!grid) return;
 
-.carousel-arrows { display: flex; justify-content: center; gap: 16px; margin-top: 40px; }
-.carousel-btn {
-  width: 48px; height: 48px; border-radius: 50%; border: 2px solid var(--color-blush-light);
-  background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center;
-  transition: all 0.3s; color: var(--color-crimson);
-}
-.carousel-btn:hover { border-color: var(--color-crimson); background: var(--color-crimson); color: #fff; }
-.carousel-btn:disabled { opacity: 0.3; cursor: default; }
-.carousel-btn:disabled:hover { border-color: var(--color-blush-light); background: #fff; color: var(--color-crimson); }
-.carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 20px; }
-.carousel-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--color-blush-light);
-  border: none; cursor: pointer; transition: all 0.3s; padding: 0;
-}
-.carousel-dot.active { background: var(--color-crimson); width: 24px; border-radius: 4px; }
+  var currentPage = 0;
+
+  function getCardsPerPage() {
+    if (window.innerWidth <= 640) return 1;
+    if (window.innerWidth <= 900) return 2;
+    return 3;
+  }
+
+  function getTotalPages() {
+    return Math.ceil(grid.children.length / getCardsPerPage());
+  }
+
+  function getSlidePercentage() {
+    var cardsPerPage = getCardsPerPage();
+    var totalCards = grid.children.length;
+    return (cardsPerPage / totalCards) * 100;
+  }
+
+  function updateCarousel() {
+    var totalPages = getTotalPages();
+    if (currentPage >= totalPages) currentPage = totalPages - 1;
+
+    var offset = currentPage * getSlidePercentage();
+    grid.style.transform = 'translateX(-' + offset + '%)';
+
+    prevBtn.disabled = currentPage === 0;
+    nextBtn.disabled = currentPage >= totalPages - 1;
+
+    dotsContainer.innerHTML = '';
+    for (var i = 0; i < totalPages; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === currentPage ? ' active' : '');
+      (function(page) {
+        dot.addEventListener('click', function() { currentPage = page; updateCarousel(); });
+      })(i);
+      dotsContainer.appendChild(dot);
+    }
+  }
+
+  prevBtn.addEventListener('click', function() {
+    if (currentPage > 0) { currentPage--; updateCarousel(); }
+  });
+
+  nextBtn.addEventListener('click', function() {
+    if (currentPage < getTotalPages() - 1) { currentPage++; updateCarousel(); }
+  });
+
+  window.addEventListener('resize', function() { currentPage = 0; updateCarousel(); });
+
+  updateCarousel();
+})();
 
   /* ═══ TEAM ═══ */
   .team { background: var(--color-blush-lightest); position: relative; }
@@ -392,7 +410,7 @@
     .hero h1 { font-size: clamp(2rem, 7vw, 2.8rem); }
     .hero-cta { flex-direction: column; }
     .btn { justify-content: center; }
-    .research-card { min-width: 100%; }
+    .research-card { width: calc(100% - 36px); }
     .team-grid, .team-grid-row-2 { grid-template-columns: 1fr 1fr; gap: 24px; }
     .partner-logos { flex-direction: column; gap: 16px; }
     .work-card { padding: 36px 28px; }
