@@ -107,12 +107,12 @@
   background: radial-gradient(circle, rgba(128, 0, 25, 0.03) 0%, transparent 70%);
   pointer-events: none;
 }
-
-  .hero-inner {
+ .hero-inner {
   max-width: var(--max-width); margin: 0 auto;
   padding: 80px clamp(24px, 4vw, 48px) var(--section-padding);
-.hero-image-col {
-  display: flex; justify-content: center;
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 80px); align-items: center;
 }
 .hero-circle {
   width: clamp(380px, 38vw, 540px); 
