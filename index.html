@@ -36,6 +36,17 @@
     background: var(--color-cream); line-height: 1.7; font-size: 16px;
     -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
+  .top-banner {
+  margin-top: 72px;
+  width: 100%;
+  overflow: hidden;
+}
+.top-banner img {
+  width: 100%;
+  height: clamp(250px, 35vw, 480px);
+  object-fit: cover;
+  display: block;
+}
 
   /* ═══ NAV ═══ */
   nav {
@@ -428,6 +439,11 @@
   <a href="#contact" onclick="closeMobileNav()">Contact</a>
 </div>
 
+  <!-- TOP BANNER -->
+<div class="top-banner">
+  <img src="images/top-banner.jpg" alt="GRAMA field work">
+</div>
+  
 <!-- HERO -->
 <section class="hero" id="about">
 <div class="hero-inner">
