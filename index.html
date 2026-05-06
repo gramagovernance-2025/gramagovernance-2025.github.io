@@ -57,13 +57,8 @@
     transition: all 0.3s ease;
   }
   nav {
-  background: rgba(128, 0, 25, 0.95);
-}
-.nav-links a { color: rgba(255,255,255,0.8); }
-.nav-links a:hover { color: #fff; }
-.nav-links a::after { background: #fff; }
-.nav-links .nav-linkedin { color: rgba(255,255,255,0.8); }
-.nav-logo img { filter: brightness(0) invert(1); 
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 2px solid var(--color-deep);
 }
   nav .nav-inner {
     max-width: var(--max-width); margin: 0 auto;
@@ -121,7 +116,7 @@
   padding: 80px clamp(24px, 4vw, 48px) var(--section-padding);
   position: relative; z-index: 2;
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(40px, 6vw, 80px); align-items: center;
+  gap: clamp(20px, 6vw, 40px); align-items: center;
 }
 .hero-circle {
   width: clamp(380px, 38vw, 540px); 
