@@ -36,19 +36,26 @@
     background: var(--color-cream); line-height: 1.7; font-size: 16px;
     -webkit-font-smoothing: antialiased; overflow-x: hidden;
   }
-  .top-banner {
+ .top-banner {
   margin-top: 72px;
   width: 100%;
   overflow: hidden;
+  position: relative;
 }
 .top-banner img {
   width: 100%;
-  height: clamp(220px, 32vw, 440px);
+  height: clamp(250px, 35vw, 480px);
   object-fit: cover;
   display: block;
-  filter: brightness(1.15);
+  position: absolute;
+  top: 0; left: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
 }
-
+.top-banner img.active {
+  opacity: 1;
+  position: relative;
+}
   /* ═══ NAV ═══ */
   nav {
     position: fixed; top: 0; width: 100%; z-index: 100;
@@ -445,9 +452,12 @@ background: rgba(253, 251, 247, 0.95);
   <a href="#contact" onclick="closeMobileNav()">Contact</a>
 </div>
 
-  <!-- TOP BANNER -->
+ <!-- TOP BANNER -->
 <div class="top-banner">
-  <img src="images/top-banner.jpg" alt="GRAMA field work">
+  <img src="images/banner-1.png" alt="Rural Bihar village" class="active">
+  <img src="images/banner-2.jpg" alt="Community gathering">
+  <img src="images/banner-3.jpg" alt="Field work">
+  <img src="images/banner-4.jpg" alt="Rural landscape">
 </div>
   
 <!-- HERO -->
@@ -531,7 +541,7 @@ background: rgba(253, 251, 247, 0.95);
       <!-- Replace with: images/jeevika-meeting.jpg and images/jeevika-partnership.jpg -->
       <img src="images/jeevika_meeting_2.jpeg" alt="Community meeting with SHG members">
       <img src="images/government-partnership.jpg" alt="Government partnership">
-       <img src="images/mou-2.jpeg" alt="Government partnership Part2">
+       <img src="images/mou-2.jpg" alt="Government partnership Part2">
     </div>
   </div>
 </section>
@@ -699,6 +709,18 @@ background: rgba(253, 251, 247, 0.95);
   });
 
   updateCarousel();
+})();
+  // Banner slideshow
+(function() {
+  var images = document.querySelectorAll('.top-banner img');
+  if (images.length < 2) return;
+  var current = 0;
+
+  setInterval(function() {
+    images[current].classList.remove('active');
+    current = (current + 1) % images.length;
+    images[current].classList.add('active');
+  }, 4000);
 })();
 </script>
 </body>
