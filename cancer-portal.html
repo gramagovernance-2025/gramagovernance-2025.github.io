@@ -357,7 +357,7 @@
           <table>
             <thead>
               <tr>
-                <th>Name</th><th>Age</th><th>Gender</th><th>Village/Panchayat</th>
+                <th>Name</th><th>Age</th><th>Gender</th><th>Village/Panchayat</th><th>Block</th>
                 <th>Diagnosis</th><th>Status</th><th>Admitted</th><th>Visit #</th>
                 <th>Next Visit</th><th>Due Tests</th><th>Due Medicine</th><th>Actions</th>
               </tr>
@@ -412,6 +412,7 @@
       </div>
       <div class="form-row">
         <div class="form-group"><label>Village / Panchayat</label><input type="text" id="pVillage"></div>
+        <div class="form-group"><label>Block</label><input type="text" id="pBlock"></div>
         <div class="form-group"><label>District</label><input type="text" id="pDistrict" value="Muzaffarpur"></div>
       </div>
 
@@ -588,6 +589,7 @@
           '<td>' + (p.age || '—') + '</td>' +
           '<td>' + (p.gender || '—') + '</td>' +
           '<td>' + esc(p.village || '—') + '</td>' +
+          '<td>' + esc(p.block || '—') + '</td>' +
           '<td>' + esc(p.diagnosis || '—') + '</td>' +
           '<td><span class="status-badge ' + getStatusClass(p.status) + '">' + p.status + '</span></td>' +
           '<td>' + (p.admitted || 'No') + '</td>' +
@@ -674,6 +676,7 @@
     document.getElementById('pGender').value = p.gender || '';
     document.getElementById('pPhone').value = p.phone || '';
     document.getElementById('pVillage').value = p.village || '';
+    document.getElementById('pBlock').value = p.block || '';
     document.getElementById('pDistrict').value = p.district || '';
     document.getElementById('pDiagnosis').value = p.diagnosis || '';
     document.getElementById('pStatus').value = p.status || 'Screening';
@@ -697,7 +700,7 @@
   }
 
   function clearForm() {
-    ['pName','pAge','pPhone','pVillage','pDiagnosis','pTreatment','pMedication','pNextVisit','pNextTest','pTestDate','pMedDate','pNotes'].forEach(function(id) {
+    ['pName','pAge','pPhone','pVillage','pBlock','pDiagnosis','pTreatment','pMedication','pNextVisit','pNextTest','pTestDate','pMedDate','pNotes'].forEach(function(id) {
       document.getElementById(id).value = '';
     });
     document.getElementById('pGender').value = '';
@@ -719,6 +722,7 @@
       gender: document.getElementById('pGender').value,
       phone: document.getElementById('pPhone').value,
       village: document.getElementById('pVillage').value,
+      block: document.getElementById('pBlock').value,
       district: document.getElementById('pDistrict').value,
       diagnosis: document.getElementById('pDiagnosis').value,
       status: document.getElementById('pStatus').value,
@@ -793,6 +797,7 @@
       '<div class="detail-item"><label>Age / Gender</label><span>' + (p.age || '—') + ' / ' + (p.gender || '—') + '</span></div>' +
       '<div class="detail-item"><label>Phone</label><span>' + (p.phone || '—') + '</span></div>' +
       '<div class="detail-item"><label>Village</label><span>' + esc(p.village || '—') + '</span></div>' +
+      '<div class="detail-item"><label>Block</label><span>' + esc(p.block || '—') + '</span></div>' +
       '<div class="detail-item"><label>District</label><span>' + esc(p.district || '—') + '</span></div>' +
       '<div class="detail-item"><label>Registered</label><span>' + formatDate(p.createdAt) + '</span></div>' +
       '</div></div>';
@@ -857,7 +862,7 @@
   function exportCSV() {
     var headers = ['Name','Age','Gender','Phone','Village','District','Diagnosis','Status','Admitted','Visit#','Treatment','Medication','Next Visit','Next Test','Test Date','Med Refill Date','Notes'];
     var rows = patients.map(function(p) {
-      return [p.name, p.age, p.gender, p.phone, p.village, p.district, p.diagnosis, p.status, p.admitted, p.visitNum, p.treatment, p.medication, p.nextVisit, p.nextTest, p.testDate, p.medDate, p.notes]
+      return [p.name, p.age, p.gender, p.phone, p.village, p.block, p.district, p.diagnosis, p.status, p.admitted, p.visitNum, p.treatment, p.medication, p.nextVisit, p.nextTest, p.testDate, p.medDate, p.notes]
         .map(function(v) { return '"' + (v || '').toString().replace(/"/g, '""') + '"'; });
     });
     var csv = [headers.join(',')].concat(rows.map(function(r) { return r.join(','); })).join('\n');
