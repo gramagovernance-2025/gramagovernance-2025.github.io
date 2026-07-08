@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Staff Login — GRAMA Cancer Care Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-deep: #800019; --color-crimson: #8E233E; --color-berry: #A74D63;
+    --color-blush-lightest: #F8E9EC; --color-blush-light: #E8C4CB;
+    --color-ink: #1a1a1a; --color-ink-light: #4a4a4a; --color-ink-muted: #7a7a7a;
+    --color-cream: #FDFBFB; --color-sand: #e8dfe1;
+    --font-serif: 'Source Serif 4', Georgia, serif;
+    --font-sans: 'DM Sans', -apple-system, sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: var(--font-sans); background: var(--color-cream);
+    min-height: 100vh; display: flex; flex-direction: column;
+  }
+
+  .login-header {
+    padding: 24px clamp(24px, 4vw, 48px);
+    border-bottom: 1px solid var(--color-sand);
+  }
+  .login-header img { height: 36px; }
+
+  .login-wrapper {
+    flex: 1; display: flex; align-items: center; justify-content: center;
+    padding: 40px 24px;
+  }
+
+  .login-card {
+    width: 100%; max-width: 420px; background: #fff;
+    border-radius: 12px; padding: 48px 40px;
+    box-shadow: 0 4px 24px rgba(128, 0, 25, 0.06);
+    border: 1px solid rgba(128, 0, 25, 0.06);
+  }
+
+  .login-icon {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--color-blush-lightest);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 24px;
+  }
+
+  .login-card h1 {
+    font-family: var(--font-serif); font-size: 1.6rem; font-weight: 600;
+    color: var(--color-ink); text-align: center; margin-bottom: 8px;
+  }
+
+  .login-card .subtitle {
+    font-size: 0.9rem; color: var(--color-ink-muted); text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .form-group { margin-bottom: 20px; }
+  .form-group label {
+    display: block; font-size: 0.85rem; font-weight: 500;
+    color: var(--color-ink-light); margin-bottom: 6px;
+  }
+  .form-group input {
+    width: 100%; padding: 12px 16px; font-family: var(--font-sans);
+    font-size: 0.95rem; border: 1.5px solid var(--color-sand);
+    border-radius: 6px; background: #fff; outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-group input:focus { border-color: var(--color-crimson); }
+
+  .login-btn {
+    width: 100%; padding: 14px; background: var(--color-deep);
+    color: #fff; border: none; border-radius: 6px;
+    font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600;
+    cursor: pointer; transition: background 0.3s; margin-top: 8px;
+  }
+  .login-btn:hover { background: var(--color-crimson); }
+
+  .login-error {
+    display: none; background: #fef2f2; border: 1px solid #fecaca;
+    color: #991b1b; padding: 10px 14px; border-radius: 6px;
+    font-size: 0.85rem; margin-bottom: 16px; text-align: center;
+  }
+  .login-error.show { display: block; }
+
+  .login-footer {
+    text-align: center; margin-top: 24px;
+    font-size: 0.82rem; color: var(--color-ink-muted);
+  }
+  .login-footer a { color: var(--color-crimson); text-decoration: none; }
+  .login-footer a:hover { text-decoration: underline; }
+
+  .back-link {
+    display: block; text-align: center; margin-top: 24px;
+    font-size: 0.85rem; color: var(--color-ink-muted); text-decoration: none;
+  }
+  .back-link:hover { color: var(--color-crimson); }
+</style>
+</head>
+<body>
+
+<div class="login-header">
+  <a href="index.html"><img src="images/Logo_1.png" alt="GRAMA"></a>
+</div>
+
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-icon">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#800019" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h1>Cancer Care Portal</h1>
+    <p class="subtitle">GRAMA Staff Access Only</p>
+
+    <div class="login-error" id="loginError">Invalid username or password</div>
+
+    <div class="form-group">
+      <label>Username</label>
+      <input type="text" id="username" placeholder="Enter username" autocomplete="username">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="password" placeholder="Enter password" autocomplete="current-password">
+    </div>
+    <button class="login-btn" onclick="handleLogin()">Login</button>
+
+    <p class="login-footer">Having trouble? Contact <a href="mailto:gramagovernance@gmail.com">gramagovernance@gmail.com</a></p>
+    <a href="cancer-care.html" class="back-link">← Back to Cancer Care Initiative</a>
+  </div>
+</div>
+
+<script>
+  // Simple credential check — change these credentials as needed
+  var USERS = {
+    'grama': 'grama2026',
+    'admin': 'admin2026',
+    'drvidyasagar': 'doctor2026'
+  };
+
+  function handleLogin() {
+    var user = document.getElementById('username').value.trim().toLowerCase();
+    var pass = document.getElementById('password').value;
+    var errorEl = document.getElementById('loginError');
+
+    if (USERS[user] && USERS[user] === pass) {
+      sessionStorage.setItem('grama_logged_in', 'true');
+      sessionStorage.setItem('grama_user', user);
+      window.location.href = 'cancer-portal.html';
+    } else {
+      errorEl.classList.add('show');
+      setTimeout(function() { errorEl.classList.remove('show'); }, 3000);
+    }
+  }
+
+  // Allow Enter key to submit
+  document.getElementById('password').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') handleLogin();
+  });
+  document.getElementById('username').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') document.getElementById('password').focus();
+  });
+
+  // If already logged in, redirect
+  if (sessionStorage.getItem('grama_logged_in') === 'true') {
+    window.location.href = 'cancer-portal.html';
+  }
+</script>
+
+</body>
+</html>
