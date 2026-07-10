@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Other Initiatives — GRAMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,300;8..60,400;8..60,600;8..60,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-blush-lightest:#F8E9EC;--color-deep:#800019;--color-crimson:#8E233E;
+    --color-ink:#1a1a1a;--color-ink-light:#4a4a4a;--color-ink-muted:#7a7a7a;--color-cream:#FDFBFB;
+    --font-serif:'Source Serif 4',Georgia,serif;--font-sans:'DM Sans',-apple-system,sans-serif;--max-width:1100px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:var(--font-sans);color:var(--color-ink);background:var(--color-cream);line-height:1.7;font-size:16px;}
+
+  nav{position:fixed;top:0;width:100%;z-index:100;background:rgba(253,251,251,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(128,0,25,0.06);}
+  .nav-inner{max-width:var(--max-width);margin:0 auto;padding:0 clamp(24px,4vw,48px);display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .nav-logo img{height:36px;}
+  .nav-back{font-size:0.85rem;color:var(--color-crimson);text-decoration:none;}
+
+  .page-header{margin-top:68px;padding:clamp(60px,8vw,100px) clamp(24px,4vw,48px) 40px;text-align:center;}
+  .page-header-inner{max-width:var(--max-width);margin:0 auto;}
+  .page-label{font-size:0.72rem;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--color-crimson);margin-bottom:16px;}
+  .page-header h1{font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:400;margin-bottom:16px;}
+  .page-header p{font-size:1.1rem;color:var(--color-ink-light);max-width:640px;margin:0 auto;line-height:1.8;}
+
+  .initiatives{padding:20px clamp(24px,4vw,48px) clamp(80px,10vw,120px);}
+  .initiative-card{background:#fff;border-radius:12px;border:1px solid rgba(0,0,0,0.06);overflow:hidden;max-width:900px;margin:0 auto;transition:all 0.4s;}
+  .initiative-card:hover{box-shadow:0 16px 48px rgba(0,0,0,0.07);transform:translateY(-4px);}
+  .initiative-card-top{background:linear-gradient(135deg,#0f4c3a,#1a6b5a);padding:clamp(32px,5vw,48px);color:#fff;position:relative;overflow:hidden;}
+  .initiative-card-top::before{content:'';position:absolute;top:-30%;right:-15%;width:50%;height:150%;border-radius:50%;background:rgba(255,255,255,0.04);}
+  .initiative-card-top h2{font-family:var(--font-serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:400;margin-bottom:12px;position:relative;z-index:2;}
+  .initiative-card-top p{font-size:1rem;line-height:1.8;color:rgba(255,255,255,0.8);max-width:560px;position:relative;z-index:2;}
+  .initiative-card-body{padding:clamp(28px,4vw,40px);}
+  .initiative-card-body p{font-size:1rem;line-height:1.85;color:var(--color-ink-light);margin-bottom:16px;}
+  .tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+  .tag{font-size:0.75rem;font-weight:600;padding:5px 14px;border-radius:20px;background:var(--color-blush-lightest);color:var(--color-deep);}
+  .learn-more{display:inline-flex;align-items:center;gap:8px;background:var(--color-deep);color:#fff;padding:14px 32px;border-radius:6px;font-size:0.9rem;font-weight:600;text-decoration:none;transition:background 0.3s;}
+  .learn-more:hover{background:var(--color-crimson);}
+
+  footer{background:#1c0a10;color:rgba(255,255,255,0.4);padding:32px;text-align:center;font-size:0.8rem;}
+  footer a{color:rgba(255,255,255,0.5);text-decoration:none;}
+  .reveal{opacity:0;transform:translateY(20px);transition:all 0.7s cubic-bezier(0.16,1,0.3,1);}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<nav><div class="nav-inner"><a href="index.html" class="nav-logo"><img src="images/Logo_1.png" alt="GRAMA"></a><a href="index.html" class="nav-back">← Back to Home</a></div></nav>
+
+<div class="page-header"><div class="page-header-inner">
+  <div class="page-label">Beyond Research</div>
+  <h1>Other Initiatives We Support</h1>
+  <p>Beyond governance research and data systems, we facilitate collaborative efforts that bring direct support to the most marginalised communities.</p>
+</div></div>
+
+<section class="initiatives"><div class="initiative-card reveal">
+  <div class="initiative-card-top">
+    <h2>Cancer Care Initiative</h2>
+    <p>A collaborative effort bringing early cancer detection, awareness, and financial support for treatment to communities where a diagnosis is still considered a death sentence.</p>
+  </div>
+  <div class="initiative-card-body">
+    <div class="tags">
+      <span class="tag">Early Detection</span><span class="tag">Financial Support</span>
+      <span class="tag">Muzaffarpur, Bihar</span><span class="tag">4 Partner Collaboration</span>
+    </div>
+    <p>Among the most marginalised communities, cancer carries a fatalism that prevents people from seeking help. This initiative — a collaboration between a senior oncologist, a grassroots organisation, a cancer hospital, and GRAMA as the facilitator — conducts health camps in panchayats, identifies suspected cases, and financially supports patients through treatment.</p>
+    <a href="cancer-care.html" class="learn-more">Learn More →</a>
+  </div>
+</div></section>
+
+<footer><a href="index.html">← GRAMA Home</a> · © 2026 GRAMA</footer>
+<script>var obs=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:0.1});document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});</script>
+</body>
+</html>
