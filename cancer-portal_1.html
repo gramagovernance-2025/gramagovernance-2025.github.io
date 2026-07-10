@@ -296,7 +296,7 @@
 
 <script>
 // AUTH
-if(sessionStorage.getItem('cc_logged_in')!=='true')window.location.href='cancer-portal-login.html';
+if(sessionStorage.getItem('cc_logged_in')!=='true')window.location.href='cancer-portal-login_1.html';
 var ROLE=sessionStorage.getItem('cc_role')||'public';
 var UNAME=sessionStorage.getItem('cc_name')||'User';
 var UUSER=sessionStorage.getItem('cc_user')||'';
@@ -334,7 +334,7 @@ function navTo(name,el){
   if(name==='dues')renderDues();
   if(name==='public')renderPublic();
 }
-function logout(){sessionStorage.clear();window.location.href='cancer-portal-login.html';}
+function logout(){sessionStorage.clear();window.location.href='cancer-portal-login_1.html';}
 
 // RENDER DASHBOARD
 function renderDash(q){
