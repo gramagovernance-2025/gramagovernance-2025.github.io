@@ -195,7 +195,7 @@
   <div class="card">
     <div class="card-header"><h2>Complete Patient Records</h2><input type="text" class="search-input" placeholder="Search..." oninput="renderAll(this.value)"></div>
     <div style="overflow-x:auto"><table><thead><tr>
-      <th>Name</th><th>Age</th><th>Gender</th><th>Block</th><th>Village</th><th>Diagnosis</th><th>Status</th><th>Admitted</th><th>Visit #</th><th>Next Visit</th><th>Due Test</th><th>Due Medicine</th><th>Actions</th>
+      <th>Name</th><th>Age</th><th>Gender</th><th>Village</th><th>Block</th><th>Diagnosis</th><th>Status</th><th>Admitted</th><th>Visit #</th><th>Next Visit</th><th>Due Test</th><th>Due Medicine</th><th>Actions</th>
     </tr></thead><tbody id="allBody"></tbody></table></div>
   </div>
 </div>
@@ -221,7 +221,7 @@
   </div>
   <div class="card">
     <div class="card-header"><h2>Patient Overview (Anonymised)</h2></div>
-    <div style="overflow-x:auto"><table><thead><tr><th>#</th><th>Age</th><th>Gender</th><th>Block</th><th>Diagnosis</th><th>Status</th><th>Visits</th></tr></thead><tbody id="pubBody"></tbody></table></div>
+    <div style="overflow-x:auto"><table><thead><tr><th>#</th><th>Age</th><th>Gender</th><th>Village</th><th>Diagnosis</th><th>Status</th><th>Visits</th></tr></thead><tbody id="pubBody"></tbody></table></div>
   </div>
 </div>
 
@@ -237,7 +237,7 @@
     <div class="form-title">Patient Information</div>
     <div class="form-row"><div class="fg"><label>Full Name *</label><input type="text" id="pName"></div><div class="fg"><label>Age</label><input type="number" id="pAge" min="0" max="120"></div></div>
     <div class="form-row"><div class="fg"><label>Gender</label><select id="pGender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other</option></select></div><div class="fg"><label>Phone</label><input type="tel" id="pPhone"></div></div>
-    <div class="form-row-3"><div class="fg"><label>Block</label><input type="text" id="pBlock"></div><div class="fg"><label>Village / Panchayat</label><input type="text" id="pVillage"></div><div class="fg"><label>District</label><input type="text" id="pDistrict" value="Muzaffarpur"></div></div>
+    <div class="form-row-3"><div class="fg"><label>Village / Panchayat</label><input type="text" id="pVillage"><div class="fg"><label>Block</label><input type="text" id="pBlock"></div></div><div class="fg"><label>District</label><input type="text" id="pDistrict" value="Muzaffarpur"></div></div>
 
     <div class="form-title">Aadhar &amp; Bank Details</div>
     <div class="form-row"><div class="fg"><label>Aadhar Card Number</label><input type="text" id="pAadhar" placeholder="12 digit number" maxlength="14"></div><div class="fg"><label>Bank Name</label><input type="text" id="pBank"></div></div>
@@ -370,7 +370,7 @@ function renderAll(q){
     var nd=dueStatus(p.nextVisit),td=dueStatus(p.testDate),md=dueStatus(p.medDate);
     var acts='<span class="link" onclick="viewPatient(\''+p.id+'\')">View</span>';
     if(ROLE==='staff')acts+=' · <span class="link" onclick="editPatient(\''+p.id+'\')">Edit</span> · <span class="link" onclick="openUpdate(\''+p.id+'\')">Update</span>';
-    h+='<tr><td><strong>'+esc(p.name)+'</strong></td><td>'+(p.age||'—')+'</td><td>'+(p.gender||'—')+'</td><td>'+esc(p.block||'—')+'</td><td>'+esc(p.village||'—')+'</td><td>'+esc(p.diagnosis||'—')+'</td><td><span class="badge '+statusCls(p.status)+'">'+p.status+'</span></td><td>'+(p.admitted||'No')+'</td><td>'+(p.visitNum||'—')+'</td><td>'+(nd.c?'<span class="due '+nd.c+'">'+nd.t+'</span>':nd.t)+'</td><td>'+(td.c?'<span class="due '+td.c+'">'+td.t+'</span>':td.t)+'</td><td>'+(md.c?'<span class="due '+md.c+'">'+md.t+'</span>':md.t)+'</td><td>'+acts+'</td></tr>';
+    h+='<tr><td><strong>'+esc(p.name)+'</strong></td><td>'+(p.age||'—')+'</td><td>'+(p.gender||'—')+'</td><td>'+esc(p.village||'—')+'</td><td>'+esc(p.block||'—')+'</td><td>'+esc(p.diagnosis||'—')+'</td><td><span class="badge '+statusCls(p.status)+'">'+p.status+'</span></td><td>'+(p.admitted||'No')+'</td><td>'+(p.visitNum||'—')+'</td><td>'+(nd.c?'<span class="due '+nd.c+'">'+nd.t+'</span>':nd.t)+'</td><td>'+(td.c?'<span class="due '+td.c+'">'+td.t+'</span>':td.t)+'</td><td>'+(md.c?'<span class="due '+md.c+'">'+md.t+'</span>':md.t)+'</td><td>'+acts+'</td></tr>';
   });tbody.innerHTML=h;
 }
 
@@ -413,14 +413,14 @@ function editPatient(id){
   var p=patients.find(function(x){return x.id===id;});if(!p)return;
   document.getElementById('modalTitle').textContent='Edit Patient';
   document.getElementById('editId').value=id;
-  'pName pAge pGender pPhone pBlock pVillage pDistrict pAadhar pBank pAccount pIFSC pDiagnosis pStatus pAdmitted pVisitNum pTreatment pMedication pNextVisit pNextTest pTestDate pMedDate pNotes'.split(' ').forEach(function(f){var el=document.getElementById(f);if(el)el.value=p[f.replace('p','').replace(/^./,function(c){return c.toLowerCase();})]||el.defaultValue||'';});
+  'pName pAge pGender pPhone pVillage pBlock pDistrict pAadhar pBank pAccount pIFSC pDiagnosis pStatus pAdmitted pVisitNum pTreatment pMedication pNextVisit pNextTest pTestDate pMedDate pNotes'.split(' ').forEach(function(f){var el=document.getElementById(f);if(el)el.value=p[f.replace('p','').replace(/^./,function(c){return c.toLowerCase();})]||el.defaultValue||'';});
   // Map fields properly
   document.getElementById('pName').value=p.name||'';
   document.getElementById('pAge').value=p.age||'';
   document.getElementById('pGender').value=p.gender||'';
   document.getElementById('pPhone').value=p.phone||'';
-  document.getElementById('pBlock').value=p.block||'';
   document.getElementById('pVillage').value=p.village||'';
+   document.getElementById('pBlock').value=p.block||'';
   document.getElementById('pDistrict').value=p.district||'Muzaffarpur';
   document.getElementById('pAadhar').value=p.aadhar||'';
   document.getElementById('pBank').value=p.bank||'';
@@ -441,12 +441,12 @@ function editPatient(id){
   document.getElementById('patientModal').classList.add('show');
 }
 function closeModal(){document.getElementById('patientModal').classList.remove('show');clearForm();}
-function clearForm(){['pName','pAge','pPhone','pBlock','pVillage','pAadhar','pBank','pAccount','pIFSC','pDiagnosis','pTreatment','pMedication','pNextVisit','pNextTest','pTestDate','pMedDate','pNotes'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('pGender').value='';document.getElementById('pDistrict').value='Muzaffarpur';document.getElementById('pStatus').value='Screening';document.getElementById('pAdmitted').value='No';document.getElementById('pVisitNum').value=1;}
+function clearForm(){['pName','pAge','pPhone','pVillage','pBlock','pAadhar','pBank','pAccount','pIFSC','pDiagnosis','pTreatment','pMedication','pNextVisit','pNextTest','pTestDate','pMedDate','pNotes'].forEach(function(id){document.getElementById(id).value='';});document.getElementById('pGender').value='';document.getElementById('pDistrict').value='Muzaffarpur';document.getElementById('pStatus').value='Screening';document.getElementById('pAdmitted').value='No';document.getElementById('pVisitNum').value=1;}
 
 function savePatient(){
   var name=document.getElementById('pName').value.trim();if(!name){alert('Name is required');return;}
   var eid=document.getElementById('editId').value;
-  var d={id:eid||gid(),name:name,age:document.getElementById('pAge').value,gender:document.getElementById('pGender').value,phone:document.getElementById('pPhone').value,block:document.getElementById('pBlock').value,village:document.getElementById('pVillage').value,district:document.getElementById('pDistrict').value,aadhar:document.getElementById('pAadhar').value,bank:document.getElementById('pBank').value,account:document.getElementById('pAccount').value,ifsc:document.getElementById('pIFSC').value,diagnosis:document.getElementById('pDiagnosis').value,status:document.getElementById('pStatus').value,admitted:document.getElementById('pAdmitted').value,visitNum:document.getElementById('pVisitNum').value,treatment:document.getElementById('pTreatment').value,medication:document.getElementById('pMedication').value,nextVisit:document.getElementById('pNextVisit').value,nextTest:document.getElementById('pNextTest').value,testDate:document.getElementById('pTestDate').value,medDate:document.getElementById('pMedDate').value,notes:document.getElementById('pNotes').value,files:tempFiles,updatedAt:new Date().toISOString(),updatedBy:UUSER};
+  var d={id:eid||gid(),name:name,age:document.getElementById('pAge').value,gender:document.getElementById('pGender').value,village:document.getElementById('pVillage').value,phone:document.getElementById('pPhone').value,block:document.getElementById('pBlock').value,district:document.getElementById('pDistrict').value,aadhar:document.getElementById('pAadhar').value,bank:document.getElementById('pBank').value,account:document.getElementById('pAccount').value,ifsc:document.getElementById('pIFSC').value,diagnosis:document.getElementById('pDiagnosis').value,status:document.getElementById('pStatus').value,admitted:document.getElementById('pAdmitted').value,visitNum:document.getElementById('pVisitNum').value,treatment:document.getElementById('pTreatment').value,medication:document.getElementById('pMedication').value,nextVisit:document.getElementById('pNextVisit').value,nextTest:document.getElementById('pNextTest').value,testDate:document.getElementById('pTestDate').value,medDate:document.getElementById('pMedDate').value,notes:document.getElementById('pNotes').value,files:tempFiles,updatedAt:new Date().toISOString(),updatedBy:UUSER};
   if(eid){var idx=patients.findIndex(function(p){return p.id===eid;});if(idx>=0){d.createdAt=patients[idx].createdAt;d.history=patients[idx].history||[];d.history.push({date:new Date().toISOString(),user:UNAME,note:'Record updated'});patients[idx]=d;}}
   else{d.createdAt=new Date().toISOString();d.history=[{date:new Date().toISOString(),user:UNAME,note:'Patient registered'}];patients.push(d);}
   save();closeModal();renderDash();
@@ -499,8 +499,8 @@ function viewPatient(id){
   h+='<div class="detail-item"><label>Name</label><span>'+esc(p.name)+'</span></div>';
   h+='<div class="detail-item"><label>Age / Gender</label><span>'+(p.age||'—')+' / '+(p.gender||'—')+'</span></div>';
   h+='<div class="detail-item"><label>Phone</label><span>'+(p.phone||'—')+'</span></div>';
-  h+='<div class="detail-item"><label>Block</label><span>'+esc(p.block||'—')+'</span></div>';
   h+='<div class="detail-item"><label>Village</label><span>'+esc(p.village||'—')+'</span></div>';
+  h+='<div class="detail-item"><label>Block</label><span>'+esc(p.block||'—')+'</span></div>';
   h+='<div class="detail-item"><label>District</label><span>'+esc(p.district||'—')+'</span></div>';
   if(ROLE==='staff'){
     h+='<div class="detail-item"><label>Aadhar</label><span>'+(p.aadhar||'—')+'</span></div>';
@@ -563,8 +563,8 @@ function closeView(){document.getElementById('viewModal').classList.remove('show
 
 // CSV
 function exportCSV(){
-  var headers=['Name','Age','Gender','Phone','Block','Village','District','Aadhar','Bank','Account','IFSC','Diagnosis','Status','Admitted','Visit#','Treatment','Medication','Next Visit','Next Test','Test Date','Med Date','Notes'];
-  var rows=patients.map(function(p){return[p.name,p.age,p.gender,p.phone,p.block,p.village,p.district,p.aadhar,p.bank,p.account,p.ifsc,p.diagnosis,p.status,p.admitted,p.visitNum,p.treatment,p.medication,p.nextVisit,p.nextTest,p.testDate,p.medDate,p.notes].map(function(v){return'"'+((v||'')+'').replace(/"/g,'""')+'"';});});
+  var headers=['Name','Age','Gender','Phone','Village','Block','District','Aadhar','Bank','Account','IFSC','Diagnosis','Status','Admitted','Visit#','Treatment','Medication','Next Visit','Next Test','Test Date','Med Date','Notes'];
+  var rows=patients.map(function(p){return[p.name,p.age,p.gender,p.phone,p.village,p.block,p.district,p.aadhar,p.bank,p.account,p.ifsc,p.diagnosis,p.status,p.admitted,p.visitNum,p.treatment,p.medication,p.nextVisit,p.nextTest,p.testDate,p.medDate,p.notes].map(function(v){return'"'+((v||'')+'').replace(/"/g,'""')+'"';});});
   var csv=[headers.join(',')].concat(rows.map(function(r){return r.join(',');})).join('\n');
   var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'}));a.download='cancer_patients_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
 }
