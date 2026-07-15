@@ -88,9 +88,9 @@
   .collab-card h3{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--slate);margin-bottom:4px;}
   .collab-card .collab-title{font-size:0.82rem;color:var(--slate-muted);font-style:italic;margin-bottom:14px;line-height:1.5;}
   .collab-card p:last-child{font-size:0.9rem;line-height:1.75;color:var(--slate-light);}
-  .collab-body{display:flex;gap:24px;align-items:center;}
-  .collab-text{flex:1;}
-  .collab-photo{width:120px;height:120px;border-radius:50%;overflow:hidden;flex-shrink:0;border:3px solid var(--line);background:var(--bone);}
+  .collab-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+  .collab-top-text{flex:1;}
+  .collab-photo{width:90px;height:90px;border-radius:50%;overflow:hidden;flex-shrink:0;border:3px solid var(--line);background:var(--bone);margin-left:20px;}
   .collab-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 
   /* ─── HOW IT WORKS ─── */
@@ -241,39 +241,52 @@
     <div class="collab-row">
       <div class="collab-card reveal">
         <div class="collab-stripe stripe-1"></div>
-        <div class="collab-body">
-          <span class="collab-role-tag role-funding">Funding &amp; Medical Oversight</span>
-          <h3>Dr. M.S. Vidyasagar</h3>
-          <p class="collab-title">Retired Head of Department, Radiation Oncology — Kasturba Medical College, Manipal, Karnataka</p>
-          <p>Funds the entire initiative and provides remote medical oversight — reviewing patient profiles, tracking updates, and offering clinical guidance.</p>
-        </div>
+      <div class="collab-body">
+      <div class="collab-top">
+      <div class="collab-top-text">
+      <span class="collab-role-tag role-funding">Funding &amp; Medical Oversight</span>
+      <h3>Dr. M.S. Vidyasagar</h3>
+      <p class="collab-title">Retired Head of Department, Radiation Oncology — Kasturba Medical College, Manipal, Karnataka</p>
+      </div>
+      <div class="collab-photo"><img src="images/dr-vidyasagar.jpg" alt="Dr. Vidyasagar"></div>
+      </div>
+      <p>Funds the entire initiative and provides remote medical oversight — reviewing patient profiles, tracking updates, and offering clinical guidance.</p>
       </div>
       <div class="collab-card reveal">
         <div class="collab-stripe stripe-2"></div>
         <div class="collab-body">
+         <div class="collab-top">
+         <div class="collab-top-text">
           <span class="collab-role-tag role-field">Field Operations &amp; Awareness</span>
           <h3>MNREGA Watch</h3>
           <p class="collab-title">Grassroots organisation present across all blocks of Muzaffarpur</p>
           <p>Organises health camps in panchayats, spreads cancer awareness, and identifies suspected cases — reaching people who would never walk into a hospital on their own.</p>
         </div>
+        <div class="collab-photo"><img src="images/cancer-initiative/mnrega-watch.jpg" alt="MNREGA Watch"></div>
       </div>
       <div class="collab-card reveal">
         <div class="collab-stripe stripe-3"></div>
-        <div class="collab-body">
+         <div class="collab-body">
+      <div class="collab-top">
+      <div class="collab-top-text">
           <span class="collab-role-tag role-clinical">Clinical Care &amp; Treatment</span>
           <h3>Dr. Ravikant Singh &amp; Team</h3>
           <p class="collab-title">Officer-in-Charge, Homi Bhabha Cancer Hospital &amp; Research Centre, Muzaffarpur</p>
           <p>Participates in field camps for screening and provides the clinical backbone — diagnosis, treatment, and ongoing medical care for confirmed patients.</p>
         </div>
+        <div class="collab-photo"><img src="images/cancer-initiative/dr-ravikant.jpg" alt="Dr. Ravikant Singh"></div>
       </div>
       <div class="collab-card reveal">
         <div class="collab-stripe stripe-4"></div>
-        <div class="collab-body">
+         <div class="collab-body">
+      <div class="collab-top">
+      <div class="collab-top-text">
           <span class="collab-role-tag role-coord">Coordination &amp; Facilitation</span>
           <h3>GRAMA</h3>
           <p class="collab-title">Coordination and patient tracking</p>
           <p>Tracks every patient's journey from screening to treatment, bridges gaps between partners, facilitates hospital visits, manages records, and connects patients to government and NGO support.</p>
         </div>
+        <div class="collab-photo"><img src="images/cancer-initiative/grama-team.jpg" alt="GRAMA"></div>
       </div>
     </div>
   </div>
