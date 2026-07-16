@@ -38,8 +38,8 @@
 <body>
 
 <div class="login-header">
-  <a href="index."><img src="images/Logo_1.png" alt="GRAMA"></a>
-  <a href="cancer-care_2.html">← Back to Initiative</a>
+  <a href="../index.html"><img src="images/Logo_1.png" alt="GRAMA"></a>
+  <a href="index.html">← Back to Initiative</a>
 </div>
 
 <div class="login-wrapper">
@@ -81,7 +81,7 @@
       sessionStorage.setItem('cc_user', user);
       sessionStorage.setItem('cc_role', USERS[user].role);
       sessionStorage.setItem('cc_name', USERS[user].name);
-      window.location.href = 'cancer-portal_1.html';
+      window.location.href = 'portal.html';
     } else {
       document.getElementById('loginError').classList.add('show');
       setTimeout(function() { document.getElementById('loginError').classList.remove('show'); }, 3000);
@@ -93,11 +93,11 @@
     sessionStorage.setItem('cc_user', 'public');
     sessionStorage.setItem('cc_role', 'public');
     sessionStorage.setItem('cc_name', 'Public View');
-    window.location.href = 'cancer-portal_1.html';
+    window.location.href = 'portal.html';
   }
 
   document.getElementById('password').addEventListener('keypress', function(e) { if (e.key === 'Enter') handleLogin(); });
-  if (sessionStorage.getItem('cc_logged_in') === 'true') window.location.href = 'cancer-portal_1.html';
+  if (sessionStorage.getItem('cc_logged_in') === 'true') window.location.href = 'portal.html';
 </script>
 </body>
 </html>
