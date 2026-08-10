@@ -368,8 +368,13 @@ background: rgba(253, 251, 247, 0.95);
   .supported .section-inner { max-width: 800px; }
   .supported-text { font-size: 1rem; color: var(--color-ink-light); line-height: 1.8; margin-top: 20px; }
   .partner-logos { display: flex; justify-content: center; align-items: center; gap: 24px; margin-top: 48px; flex-wrap: wrap; }
-  .partner-logo { font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; color: var(--color-gray-text); padding: 18px 30px; border: 1px solid var(--color-blush-light); border-radius: 4px; background: #fff; transition: all 0.3s; }
-  .partner-logo:hover { border-color: var(--color-crimson); color: var(--color-crimson); box-shadow: 0 4px 16px rgba(128, 0, 25, 0.08); }
+  .partner-logo {
+    display: flex; align-items: center; justify-content: center;
+    width: 170px; height: 76px; padding: 14px 20px;
+    border: 1px solid var(--color-blush-light); border-radius: 4px; background: #fff; transition: all 0.3s;
+  }
+  .partner-logo:hover { border-color: var(--color-crimson); box-shadow: 0 4px 16px rgba(128, 0, 25, 0.08); }
+  .partner-logo img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 
   /* ═══ CONTACT ═══ */
   .contact { background: var(--color-cream); }
