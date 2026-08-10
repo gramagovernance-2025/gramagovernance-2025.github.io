@@ -119,7 +119,7 @@ background: rgba(253, 251, 247, 0.95);
 
   /* ═══ HERO ═══ */
 .hero {
-  min-height: 100vh; display: flex; align-items: center;
+  display: flex; align-items: center;
   position: relative; overflow: hidden;
   background: var(--color-cream);
 }
@@ -137,7 +137,7 @@ background: rgba(253, 251, 247, 0.95);
 }
  .hero-inner {
   max-width: var(--max-width); margin: 0 auto;
-  padding: 20px clamp(24px, 4vw, 48px) var(--section-padding);
+  padding: 0 clamp(24px, 4vw, 48px);
   position: relative; z-index: 2;
   display: grid; grid-template-columns: 1fr 1fr;
   gap: clamp(20px, 6vw, 40px); align-items: center;
@@ -274,7 +274,7 @@ background: rgba(253, 251, 247, 0.95);
   .photo-caption { font-size: 0.88rem; color: var(--color-ink-muted); margin-top: 12px; line-height: 1.5; }
 
   /* ═══ DELIMITATION DASHBOARD ═══ */
-  .delimitation-feature { background: var(--color-cream); text-align: center; }
+  .delimitation-feature { background: var(--color-cream); text-align: center; padding-bottom: 40px; }
   .delimitation-feature .section-label { text-align: center; }
   .delimitation-graph {
     max-width: 1120px; margin: 40px auto 0; border-radius: 10px; overflow: hidden;
