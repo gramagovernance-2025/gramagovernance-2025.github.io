@@ -59,7 +59,7 @@
   border-bottom: 2px solid var(--color-deep);
 }
   nav .nav-inner {
-    max-width: var(--max-width); margin: 0 auto;
+    width: 100%;
     padding: 0 clamp(24px, 4vw, 48px);
     display: flex; align-items: center; justify-content: space-between; height: 72px;
   }
