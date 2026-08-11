@@ -216,6 +216,34 @@
     images[current].classList.add('active');
   }, 4000);
 })();
+  // Scale the delimitation dashboard embed to fit narrow screens instead of
+  // letting its internal layout squeeze into an illegible side-by-side view
+  (function() {
+    var wrap = document.querySelector('.delimitation-graph');
+    var iframe = wrap ? wrap.querySelector('iframe') : null;
+    if (!wrap || !iframe) return;
+    var DESIGN_WIDTH = 1120;
+    var DESIGN_HEIGHT = 900;
+    var MOBILE_BREAKPOINT = 760;
+
+    function applyScale() {
+      if (window.innerWidth > MOBILE_BREAKPOINT) {
+        iframe.style.width = '100%';
+        iframe.style.height = DESIGN_HEIGHT + 'px';
+        iframe.style.transform = 'none';
+        wrap.style.height = 'auto';
+        return;
+      }
+      var scale = wrap.clientWidth / DESIGN_WIDTH;
+      iframe.style.width = DESIGN_WIDTH + 'px';
+      iframe.style.height = DESIGN_HEIGHT + 'px';
+      iframe.style.transformOrigin = 'top left';
+      iframe.style.transform = 'scale(' + scale + ')';
+      wrap.style.height = (DESIGN_HEIGHT * scale) + 'px';
+    }
+    applyScale();
+    window.addEventListener('resize', applyScale);
+  })();
 </script>
 </body>
 </html>
