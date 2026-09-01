@@ -30,14 +30,15 @@
   .page-header h1 { margin-bottom: 8px; }
   .opening { background: #fff; }
   .opening-meta { font-size: 0.9rem; font-weight: 600; color: var(--color-crimson); letter-spacing: 0.02em; margin: 16px 0 28px; }
-  .opening-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
-  .opening-card { background: var(--color-blush-lightest); border-radius: 6px; padding: clamp(28px, 4vw, 40px); }
-  .opening-card h3 { font-family: var(--font-serif); font-size: 1.15rem; font-weight: 600; color: var(--color-deep); margin-bottom: 16px; }
-  .opening-card ul { padding-left: 20px; }
-  .opening-card li { font-size: 0.95rem; line-height: 1.7; color: var(--color-ink-light); margin-bottom: 10px; }
-  .opening-card li:last-child { margin-bottom: 0; }
-  .opening-cta { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 40px; }
-  @media (max-width: 760px) { .opening-cards { grid-template-columns: 1fr; } }
+  .opening-grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: clamp(40px, 6vw, 80px); align-items: start; }
+  .opening-text p { font-size: 1.05rem; line-height: 1.85; color: var(--color-ink-light); margin-bottom: 20px; }
+  .opening-text p:last-child { margin-bottom: 0; }
+  .opening-side { background: var(--color-blush-lightest); border-radius: 8px; padding: clamp(28px, 4vw, 36px); }
+  .opening-deadline-label { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-crimson); margin-bottom: 8px; }
+  .opening-deadline-date { font-family: var(--font-serif); font-size: 1.7rem; font-weight: 600; color: var(--color-deep); line-height: 1.25; margin-bottom: 28px; }
+  .opening-cta { display: flex; flex-direction: column; gap: 14px; }
+  .opening-cta .btn { justify-content: center; width: 100%; }
+  @media (max-width: 900px) { .opening-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 
@@ -79,37 +80,22 @@
   <div class="section-inner">
     <div class="section-label reveal">Current Opening</div>
     <h2 class="section-heading reveal" style="max-width:100%;">Research Associate, GRAMA</h2>
-    <p class="opening-meta reveal">Based in Patna &nbsp;·&nbsp; Start: Oct 15, 2026 &nbsp;·&nbsp; Apply by: Sept 21, 2026</p>
-    <p class="section-text reveal">GRAMA is hiring a Research Associate to work across the full arc of a research project: from an RCT on peer learning among local leaders in JEEViKA, Bihar, to translating results for policymakers and seeing how those results shape policy. The team is led by M. R. Sharan (University of Maryland), Siddharth George (National University of Singapore), Siddharth Hari (World Bank), Apurva Bamezai (Ashoka University), and Nandini Gupta (University of Oxford). Previous RAs have gone on to PhD programs at Harvard, Oxford, Chicago, Yale, UBC, Stanford GSB, Columbia, UC Davis, UC Irvine, and Imperial, and to pre-docs at Oxford, Princeton, and Harvard.</p>
+    <p class="opening-meta reveal">Based in Patna &nbsp;·&nbsp; Start: Oct 15, 2026</p>
 
-    <div class="opening-cards reveal">
-      <div class="opening-card">
-        <h3>What You'll Do</h3>
-        <ul>
-          <li>Design survey questionnaires and refine surveying instruments</li>
-          <li>Plan and manage data collection, ensuring data quality and productivity</li>
-          <li>Recruit, train, and supervise field-based and data operations teams</li>
-          <li>Clean and analyse data, and prepare documents and presentations for dissemination</li>
-          <li>Engage directly with government stakeholders, from block-level functionaries to senior state officials</li>
-          <li>Contribute to academic papers, policy notes, and presentations for scholarly and government audiences</li>
-        </ul>
+    <div class="opening-grid">
+      <div class="opening-text reveal">
+        <p>GRAMA is hiring a Research Associate to work across the full arc of a research project: from an RCT on peer learning among local leaders in JEEViKA, Bihar, to translating results for policymakers and seeing how those results shape policy.</p>
+        <p>You'll design and refine survey instruments, plan and manage data collection, and recruit, train, and supervise field-based and data operations teams. You'll clean and analyse data, prepare documents and presentations for dissemination, and engage directly with government stakeholders, from block-level functionaries to senior state officials, while contributing to academic papers, policy notes, and presentations for scholarly and government audiences.</p>
+        <p>We're looking for someone with a Master's or a strong Undergraduate degree in Economics, Political Science, Public Policy, Data Science, or a related field, with strong data skills in Stata and/or R (Python is a bonus) and familiarity with modern applied econometric methods. You should be comfortable liaising with a wide range of stakeholders, including senior government officials, willing to travel within Bihar including extended stints in the field, and proficient in both English and Hindi.</p>
       </div>
-      <div class="opening-card">
-        <h3>What We're Looking For</h3>
-        <ul>
-          <li>Master's or a strong Undergraduate degree in Economics, Political Science, Public Policy, Data Science, or a related field</li>
-          <li>Strong data skills, well-versed in Stata and/or R; working knowledge of Python is a bonus</li>
-          <li>Familiarity with modern applied econometric methods</li>
-          <li>Comfort liaising with a wide range of stakeholders, including senior government officials and academics</li>
-          <li>Willingness to travel within Bihar, including extended stints in the field</li>
-          <li>Working proficiency in English and Hindi; valid work authorization in India</li>
-        </ul>
+      <div class="opening-side reveal">
+        <div class="opening-deadline-label">Apply By</div>
+        <div class="opening-deadline-date">September 21, 2026</div>
+        <div class="opening-cta">
+          <a href="pdfs/research-associate-jd.pdf" target="_blank" rel="noopener" class="btn btn-outline">View Full JD (PDF)</a>
+          <a href="https://forms.gle/kMYkokheFcBGLUqq6" target="_blank" rel="noopener" class="btn btn-primary">Apply Now <span class="btn-arrow">&rarr;</span></a>
+        </div>
       </div>
-    </div>
-
-    <div class="opening-cta reveal">
-      <a href="pdfs/research-associate-jd.pdf" target="_blank" rel="noopener" class="btn btn-outline">View Full JD (PDF)</a>
-      <a href="https://forms.gle/kMYkokheFcBGLUqq6" target="_blank" rel="noopener" class="btn btn-primary">Apply Now <span class="btn-arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
