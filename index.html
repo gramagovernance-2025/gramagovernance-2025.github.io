@@ -72,10 +72,10 @@
     <div class="section-label reveal">Current Work</div>
     <h2 class="section-heading reveal" style="max-width:100%;text-align:center;">Understanding Delimitation in Bihar</h2>
     <div class="delimitation-graph reveal">
-      <iframe src="https://gramagovernance.com/bihar-gp-size-dashboard/?embed=1" title="Who Benefits the Most from GP Delimitation? — live dashboard" loading="lazy"></iframe>
+      <iframe src="https://gramagovernance.com/Redrawing-the-Map/" title="Redrawing Bihar's Map: A Handbook for Panchayat Delimitation" loading="lazy"></iframe>
     </div>
     <div class="delimitation-cta reveal">
-      <a href="work.html#gp-delimitation-dashboard" class="btn btn-primary">Check This Out <span class="btn-arrow">&rarr;</span></a>
+      <a href="https://gramagovernance.com/Redrawing-the-Map/" class="btn btn-primary" target="_blank">Check This Out <span class="btn-arrow">&rarr;</span></a>
     </div>
   </div>
 </section>
@@ -216,33 +216,16 @@
     images[current].classList.add('active');
   }, 4000);
 })();
-  // Scale the delimitation dashboard embed to fit narrow screens instead of
-  // letting its internal layout squeeze into an illegible side-by-side view
+  // The embedded page (Redrawing the Map) is already a responsive article,
+  // not a fixed-width dashboard layout, so it just needs a sensible fixed
+  // height rather than the scale-to-fit hack a dense side-by-side dashboard
+  // would need on narrow screens.
   (function() {
     var wrap = document.querySelector('.delimitation-graph');
     var iframe = wrap ? wrap.querySelector('iframe') : null;
     if (!wrap || !iframe) return;
-    var DESIGN_WIDTH = 1120;
-    var DESIGN_HEIGHT = 900;
-    var MOBILE_BREAKPOINT = 760;
-
-    function applyScale() {
-      if (window.innerWidth > MOBILE_BREAKPOINT) {
-        iframe.style.width = '100%';
-        iframe.style.height = DESIGN_HEIGHT + 'px';
-        iframe.style.transform = 'none';
-        wrap.style.height = 'auto';
-        return;
-      }
-      var scale = wrap.clientWidth / DESIGN_WIDTH;
-      iframe.style.width = DESIGN_WIDTH + 'px';
-      iframe.style.height = DESIGN_HEIGHT + 'px';
-      iframe.style.transformOrigin = 'top left';
-      iframe.style.transform = 'scale(' + scale + ')';
-      wrap.style.height = (DESIGN_HEIGHT * scale) + 'px';
-    }
-    applyScale();
-    window.addEventListener('resize', applyScale);
+    iframe.style.width = '100%';
+    iframe.style.height = '900px';
   })();
 </script>
 </body>
