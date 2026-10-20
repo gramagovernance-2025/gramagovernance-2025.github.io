@@ -187,7 +187,7 @@
     </div>
     <div class="footer-links">
       <div class="footer-col"><h4>Navigate</h4><ul><li><a href="#home">Home</a></li><li><a href="#vision">Our Vision</a></li><li><a href="work.html">Our Work</a></li><li><a href="team.html">Our Team</a></li></ul></div>
-      <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:gramagovernance@gmail.com">gramagovernance@gmail.com</a></li><li><a href="https://www.linkedin.com/company/grama-india" target="_blank">LinkedIn</a></li><li><a href="https://x.com/gramagov" target="_blank">X</a></li></ul></div>
+      <div class="footer-col"><h4>Connect</h4><ul><li><a href="mailto:grama@gramagovernance.com">grama@gramagovernance.com</a></li><li><a href="https://www.linkedin.com/company/grama-india" target="_blank">LinkedIn</a></li><li><a href="https://x.com/gramagov" target="_blank">X</a></li></ul></div>
       <div class="footer-col"><h4>Location</h4><ul><li><a href="#">Patna, Bihar</a></li><li><a href="#">India</a></li></ul></div>
     </div>
   </div>
@@ -216,34 +216,6 @@
     images[current].classList.add('active');
   }, 4000);
 })();
-  // Scale the delimitation dashboard embed to fit narrow screens instead of
-  // letting its internal layout squeeze into an illegible side-by-side view
-  (function() {
-    var wrap = document.querySelector('.delimitation-graph');
-    var iframe = wrap ? wrap.querySelector('iframe') : null;
-    if (!wrap || !iframe) return;
-    var DESIGN_WIDTH = 1120;
-    var DESIGN_HEIGHT = 900;
-    var MOBILE_BREAKPOINT = 760;
-
-    function applyScale() {
-      if (window.innerWidth > MOBILE_BREAKPOINT) {
-        iframe.style.width = '100%';
-        iframe.style.height = DESIGN_HEIGHT + 'px';
-        iframe.style.transform = 'none';
-        wrap.style.height = 'auto';
-        return;
-      }
-      var scale = wrap.clientWidth / DESIGN_WIDTH;
-      iframe.style.width = DESIGN_WIDTH + 'px';
-      iframe.style.height = DESIGN_HEIGHT + 'px';
-      iframe.style.transformOrigin = 'top left';
-      iframe.style.transform = 'scale(' + scale + ')';
-      wrap.style.height = (DESIGN_HEIGHT * scale) + 'px';
-    }
-    applyScale();
-    window.addEventListener('resize', applyScale);
-  })();
 </script>
 </body>
 </html>
