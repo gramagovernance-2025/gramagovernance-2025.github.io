@@ -298,11 +298,7 @@ background: rgba(253, 251, 247, 0.95);
   display: inline-block; padding: 6px 16px; border-radius: 999px;
   background: #800019; border: 1px solid #800019;
   color: #fff; font-size: 0.78rem; font-weight: 600;
-  letter-spacing: 0.02em; white-space: nowrap;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.research-row:hover .keyword-pill {
-  transform: translateY(-2px); box-shadow: 0 4px 14px rgba(128, 0, 25, 0.35);
+  letter-spacing: 0.02em; white-space: nowrap; cursor: default;
 }
 .research-row-desc { color: var(--color-gray-text); line-height: 1.7; }
 

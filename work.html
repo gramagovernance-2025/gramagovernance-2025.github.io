@@ -204,6 +204,9 @@
   window.addEventListener('scroll', () => {
     document.querySelector('nav').style.boxShadow = window.pageYOffset > 80 ? '0 2px 24px rgba(128, 0, 25, 0.06)' : 'none';
   });
+  document.querySelectorAll('.keyword-pill').forEach(el => {
+    el.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); });
+  });
 </script>
 </body>
 </html>
