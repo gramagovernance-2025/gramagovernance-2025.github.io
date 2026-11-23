@@ -296,14 +296,13 @@ background: rgba(253, 251, 247, 0.95);
 }
 .keyword-pill {
   display: inline-block; padding: 6px 16px; border-radius: 999px;
-  background: var(--color-blush-lightest); border: 1px solid var(--color-blush-light);
-  color: var(--color-crimson); font-size: 0.78rem; font-weight: 600;
+  background: #800019; border: 1px solid #800019;
+  color: #fff; font-size: 0.78rem; font-weight: 600;
   letter-spacing: 0.02em; white-space: nowrap;
-  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 .research-row:hover .keyword-pill {
-  background: var(--color-crimson); border-color: var(--color-crimson); color: #fff;
-  transform: translateY(-2px); box-shadow: 0 4px 14px rgba(128, 0, 25, 0.25);
+  transform: translateY(-2px); box-shadow: 0 4px 14px rgba(128, 0, 25, 0.35);
 }
 .research-row-desc { color: var(--color-gray-text); line-height: 1.7; }
 
