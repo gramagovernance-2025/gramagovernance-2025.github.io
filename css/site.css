@@ -299,6 +299,7 @@ background: rgba(253, 251, 247, 0.95);
   background: #800019; border: 1px solid #800019;
   color: #fff; font-size: 0.78rem; font-weight: 600;
   letter-spacing: 0.02em; white-space: nowrap; cursor: default;
+  -webkit-tap-highlight-color: transparent; user-select: none;
 }
 .research-row-desc { color: var(--color-gray-text); line-height: 1.7; }
 
