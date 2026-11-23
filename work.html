@@ -35,7 +35,13 @@
     <a href="index.html" class="nav-logo"><img src="images/site/Logo_1.png" alt="GRAMA"></a>
     <ul class="nav-links">
   <li><a href="index.html#home">Home</a></li>
-  <li><a href="index.html#vision">Our Vision</a></li>
+  <li class="nav-has-dropdown">
+    <a href="about.html">About Us</a>
+    <ul class="nav-dropdown">
+      <li><a href="about.html#vision">Our Vision</a></li>
+      <li><a href="about.html#partnerships">Partnerships and Research</a></li>
+    </ul>
+  </li>
   <li><a href="work.html">Our Work</a></li>
   <li><a href="team.html">Our Team</a></li>
   <li><a href="other-initiatives.html">Other Initiatives</a></li>
@@ -46,48 +52,17 @@
 </nav>
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html#home" onclick="closeMobileNav()">Home</a>
-  <a href="index.html#vision" onclick="closeMobileNav()">Our Vision</a>
+  <a href="about.html" onclick="closeMobileNav()">About Us</a>
+  <a href="about.html#vision" onclick="closeMobileNav()" class="mobile-nav-sub">Our Vision</a>
+  <a href="about.html#partnerships" onclick="closeMobileNav()" class="mobile-nav-sub">Partnerships and Research</a>
   <a href="work.html" onclick="closeMobileNav()">Our Work</a>
   <a href="team.html" onclick="closeMobileNav()">Our Team</a>
   <a href="other-initiatives.html" onclick="closeMobileNav()">Other Initiatives</a>
   <a href="contact.html" onclick="closeMobileNav()">Careers</a>
 </div>
 
-<!-- PAGE HEADER -->
-<div class="page-header"><div class="page-header-inner">
-  <div class="section-label reveal">Our Work</div>
-  <h1 class="reveal">Partnerships and Research</h1>
-  <p class="reveal">Our current government partnership, and the field research on local governance, JEEViKA, and citizen-centric data systems it draws on.</p>
-</div></div>
-
-<!-- JEEVIKA FEATURE -->
-<section class="jeevika-feature">
-  <div class="jeevika-inner">
-    <div class="section-label reveal">Current Partnership</div>
-    <h2 class="section-heading reveal" style="max-width:100%;text-align:center;margin-left:auto;margin-right:auto;">Empowering Institutions, Empowering Women: Supporting JEEViKA's Transformation</h2>
-    <div class="jeevika-blockquote reveal">
-      <p>JEEViKA, Bihar's flagship government programme for self-help groups and rural livelihoods, spans 1.4 crore households across the state. GRAMA is partnering with JEEViKA to strengthen its data systems and accountability frameworks as part of a long-term organisational transformation.</p>
-      <p>Through this collaboration, JEEViKA is evolving into a more data-driven and responsive institution. GRAMA's work focuses on building tools and feedback systems that capture real-time insights from the field, streamline information flows across levels, and enhance the use of data for decision-making.</p>
-    </div>
-    <div class="jeevika-photos reveal">
-  <div class="jeevika-photo-item">
-    <img src="images/content/jeevika_meeting_2.jpeg" alt="Community meeting with SHG members">
-    <p class="photo-caption">SHG meeting in Bhojpur</p>
-  </div>
-  <div class="jeevika-photo-item">
-    <img src="images/content/mou-1.jpg" alt="MoU signing with JEEViKA">
-    <p class="photo-caption">MoU signing with JEEViKA, October 2025</p>
-  </div>
-  <div class="jeevika-photo-item">
-    <img src="images/content/mou-2.jpg" alt="MoU exchange">
-    <p class="photo-caption">MoU signing with JEEViKA, May 2026</p>
-  </div>
-</div>
-  </div>
-</section>
-
 <!-- RESEARCH OUTPUTS -->
-<section class="research" id="research">
+<section class="research" id="research" style="margin-top:72px;">
   <div class="section-inner">
     <div class="section-label reveal" style="text-align:center;">Research</div>
     <h2 class="section-heading reveal" style="max-width:100%;text-align:center;">Research Outputs</h2>

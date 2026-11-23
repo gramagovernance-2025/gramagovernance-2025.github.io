@@ -35,7 +35,13 @@
     <a href="index.html" class="nav-logo"><img src="images/site/Logo_1.png" alt="GRAMA"></a>
     <ul class="nav-links">
   <li><a href="index.html#home">Home</a></li>
-  <li><a href="index.html#vision">Our Vision</a></li>
+  <li class="nav-has-dropdown">
+    <a href="about.html">About Us</a>
+    <ul class="nav-dropdown">
+      <li><a href="about.html#vision">Our Vision</a></li>
+      <li><a href="about.html#partnerships">Partnerships and Research</a></li>
+    </ul>
+  </li>
   <li><a href="work.html">Our Work</a></li>
   <li><a href="team.html">Our Team</a></li>
   <li><a href="other-initiatives.html">Other Initiatives</a></li>
@@ -46,7 +52,9 @@
 </nav>
 <div class="mobile-nav" id="mobileNav">
   <a href="index.html#home" onclick="closeMobileNav()">Home</a>
-  <a href="index.html#vision" onclick="closeMobileNav()">Our Vision</a>
+  <a href="about.html" onclick="closeMobileNav()">About Us</a>
+  <a href="about.html#vision" onclick="closeMobileNav()" class="mobile-nav-sub">Our Vision</a>
+  <a href="about.html#partnerships" onclick="closeMobileNav()" class="mobile-nav-sub">Partnerships and Research</a>
   <a href="work.html" onclick="closeMobileNav()">Our Work</a>
   <a href="team.html" onclick="closeMobileNav()">Our Team</a>
   <a href="other-initiatives.html" onclick="closeMobileNav()">Other Initiatives</a>
