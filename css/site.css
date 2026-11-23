@@ -292,7 +292,7 @@ background: rgba(253, 251, 247, 0.95);
   box-shadow: 0 4px 20px rgba(0,0,0,0.08); background: var(--color-blush-light);
   transition: box-shadow 0.3s ease;
 }
-.research-row-image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.research-row-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
 .research-row:hover .research-row-image { box-shadow: 0 8px 32px rgba(128, 0, 25, 0.14); }
 .research-row-body { flex: 1; }
 .research-row-meta {
