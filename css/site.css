@@ -270,7 +270,7 @@ background: rgba(253, 251, 247, 0.95);
   text-decoration: none; scroll-margin-top: 100px;
 }
 .research-row-image {
-  width: 360px; flex-shrink: 0; aspect-ratio: 1/1; border-radius: 6px; overflow: hidden;
+  width: 220px; flex-shrink: 0; aspect-ratio: 1/1; border-radius: 6px; overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.08); background: var(--color-blush-light);
   transition: box-shadow 0.3s ease;
 }
